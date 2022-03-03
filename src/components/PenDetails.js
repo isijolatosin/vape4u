@@ -11,19 +11,19 @@ const PenDetails = function ({ singlePen }) {
 	const deci = Number(Math.random().toFixed(1))
 
 	return (
-		<div className="flex items-center justify-center bg-gradient-to-r from-yellow-100 via-yellow-50 to-yellow-100 rounded-[30px] px-10">
+		<div className="flex flex-col w-[90%] mx-auto md:w-full py-10 md:py-0 md:flex-row items-center justify-center bg-gradient-to-r from-yellow-100 via-yellow-50 to-yellow-100 rounded-[30px] px-10">
 			<div className="flex-[0.3]">
 				<p className="text-2xl font-bold text-blue-800 leading-6 mb-2">
 					{singlePen.name}
 				</p>
 				<p className="text-xs leading-4  text-neutral-500">{singlePen.desc}</p>
 			</div>
-			<div className="flex-[0.35] relative m-10 w-[100px] bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500 object-cover rounded-full">
+			<div className="flex-[0.35] relative m-10 max-w-[230px] md:max-w-[230px] bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500 object-cover rounded-full">
 				<img
 					id=""
 					src={singlePen.url}
 					alt=""
-					className="w-[300px] object-cover h-[250px] rounded-full "
+					className="w-[300px] object-cover h-[230px] rounded-full "
 				/>
 				<span className="absolute bottom-8 right-[38.2%] text-xs font-bold text-blue-800 px-2 py-[1px] rounded-md bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500">
 					${singlePen.price}:00
