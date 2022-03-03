@@ -134,13 +134,13 @@ const Shop = function () {
 		<Layout>
 			<div className="w-[100%]">
 				<div className="bg-yellow-500 p-10 rounded-[30px] h-[250px]">
-					<div className="flex justify-between items-center">
-						<span className="text-xs flex-[0.45] text-white">
+					<div className="flex flex-col md:flex-row justify-between items-center">
+						<span className="text-xs flex-[0.45] text-white mb-2 md:mb-0">
 							Home<span className="text-black font-bold"> / Shop</span>
 						</span>
 						<div className="flex-[0.55] flex justify-between items-center">
 							<div className="">
-								<span className="font-bold text-xl">Shop</span>
+								<span className="font-bold mr-28 md:mr-0 text-xl">Shop</span>
 							</div>
 							<div className="flex h-[30px] items-center">
 								<span className="text-xs mr-3">
@@ -160,13 +160,13 @@ const Shop = function () {
 						</div>
 					</div>
 				</div>
-				<div className="mt-[-210px] p-10 pb-1">
+				<div className="md:mt-[-210px] mt-[-180px]  p-10 pb-1">
 					{singlePen.length !== 0 && (
 						<div>
 							<PenDetails singlePen={singlePen} />
 						</div>
 					)}
-					<div className="w-full justify-center grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+					<div className="w-full justify-center grid md:grid-cols-3 lg:grid-cols-4 ">
 						{products.slice(0, lastLength).map((pen) => (
 							<div
 								key={pen.id}
