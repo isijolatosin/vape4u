@@ -20,9 +20,9 @@ function Card({ pen, setSinglePen, scrollToTop }) {
 				id={pen.id}
 				src={pen.url}
 				alt={pen.name}
-				className=" w-[90%] h-[90%] mx-auto object-contain"
+				className="max-w-[90%] max-h-[300px] md:max-w-[90%] md:max-h-[200px] mt-10 mx-auto object-contain"
 			/>
-			<div className="bg-blur absolute bottom-0 w-full rounded-b-[20px] py-2 text-center text-xs text-blue-800 font-bold flex flex-col leading-2 px-3">
+			<div className="bg-blur absolute bottom-0 w-full h-[100px] rounded-b-[20px] py-2 text-center text-xs text-blue-800 font-bold flex flex-col leading-2 px-3">
 				<span>{pen.name}</span>
 				<span>${pen.price}:00</span>
 			</div>
