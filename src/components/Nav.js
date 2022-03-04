@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom'
 import Logo from '../components/Logo'
 import { BsHandbagFill } from 'react-icons/bs'
 import { BsHandbag } from 'react-icons/bs'
+import { selectItemCount, selectTotal } from '../slices/appSlices'
+import { useSelector } from 'react-redux'
 
 const Nav = function () {
 	const [active, setActive] = React.useState()
-	const itemCount = 1
+	const itemCount = useSelector(selectItemCount)
+	const total = useSelector(selectTotal)
 	const navLinks = [
 		{
 			id: 1,
@@ -54,7 +57,7 @@ const Nav = function () {
 					))}
 				</div>
 				<Link to="/checkout" className="flex items-center justify-between">
-					<span className="text-xs font-bold">$200:00</span>
+					<span className="text-xs font-bold">${total}:00</span>
 					<div
 						className={
 							itemCount > 0 ? 'ml-5 bg-neutral-200 p-2 rounded-full' : 'ml-5'
@@ -74,7 +77,7 @@ const Nav = function () {
 						onClick={() => setActive(nav.navName)}
 						className={
 							active === nav.navName
-								? 'mx-3 text-neutral-300 font-bold text-xs ease-in duration-300 hover:text-cyan-900'
+								? 'mx-3 text-yellow-500 font-bold text-xs ease-in duration-300 hover:text-cyan-900'
 								: 'mx-3 text-neutral-800 font-bold text-xs ease-in duration-300 hover:text-cyan-900'
 						}
 						key={nav.id}

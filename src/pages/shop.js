@@ -2,8 +2,10 @@ import React from 'react'
 import Layout from '../components/shared/Layout'
 import Card from '../components/Card'
 import PenDetails from '../components/PenDetails'
+import { Helmet } from 'react-helmet'
 
 const Shop = function () {
+	const [pens, setShowPens] = React.useState(false)
 	const [singlePen, setSinglePen] = React.useState([])
 	const [lastLength, setLastLength] = React.useState(8)
 	const filterList = [
@@ -130,6 +132,36 @@ const Shop = function () {
 		window.scrollTo(0, 0)
 	}
 
+	const Pens = () => {
+		return (
+			<>
+				<Helmet>
+					<title>Shop</title>
+				</Helmet>
+				<div className="w-full justify-center grid md:grid-cols-3 lg:grid-cols-4 ">
+					{products.slice(0, lastLength).map((pen) => (
+						<div
+							key={pen.id}
+							className="px-2 mb-5 justify-center items-center flex flex-row">
+							<Card
+								key={pen.id}
+								pen={pen}
+								setSinglePen={setSinglePen}
+								scrollToTop={scrollToTop}
+							/>
+						</div>
+					))}
+				</div>
+			</>
+		)
+	}
+
+	React.useEffect(() => {
+		setTimeout(() => {
+			setShowPens(true)
+		}, 2000)
+	}, [])
+
 	return (
 		<Layout>
 			<div className="w-[100%]">
@@ -166,22 +198,15 @@ const Shop = function () {
 							<PenDetails singlePen={singlePen} />
 						</div>
 					)}
-					<div className="w-full justify-center grid md:grid-cols-3 lg:grid-cols-4 ">
-						{products.slice(0, lastLength).map((pen) => (
-							<div
-								key={pen.id}
-								className="px-2 mb-5 justify-center items-center flex flex-row">
-								<Card
-									key={pen.id}
-									pen={pen}
-									setSinglePen={setSinglePen}
-									scrollToTop={scrollToTop}
-								/>
-							</div>
-						))}
-					</div>
+					{products && pens ? (
+						<Pens />
+					) : (
+						<div className="text-center my-10 text-xs text-neutral-50">
+							Loading pen...
+						</div>
+					)}
 				</div>
-				{lastLength !== products.length && (
+				{products && lastLength !== products.length && (
 					<div
 						onClick={() => {
 							if (lastLength !== products.length) {

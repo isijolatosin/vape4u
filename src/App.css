@@ -2,6 +2,13 @@ html {
 	scroll-behavior: smooth;
 }
 
+.total-button {
+	margin-top: 30px;
+	display: flex;
+	width: 290px;
+	justify-content: center;
+}
+
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
 	.bg-blur {
 		-webkit-backdrop-filter: blur(5px);

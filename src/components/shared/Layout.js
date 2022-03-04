@@ -3,7 +3,7 @@ import Nav from '../Nav'
 
 function Layout({ children }) {
 	return (
-		<div className="my-[50px] bg-gradient-to-r from-gray-100 via-gray-200 to-gray-50 xl:w-[90%] lg:w-[90%] md:w-[100%] mx-auto justify-center border-2 border-slate-200 drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] rounded-[30px] lg:p-6">
+		<div className="w-[90%] my-[50px] bg-gradient-to-r from-yellow-100 via-yellow-50 to-yellow-100 xl:w-[90%] lg:w-[90%] md:w-[100%] mx-auto justify-center border-2 border-slate-200 drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] rounded-[30px] lg:p-6">
 			<div className="pt-6 pb-2 px-6 lg:p-0">
 				<Nav />
 			</div>

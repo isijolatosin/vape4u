@@ -12,7 +12,6 @@ const initialState = {
 	cartItems: [],
 	itemCount: 0,
 	total: 0,
-	bookingObject: '',
 }
 
 export const appSlices = createSlice({
@@ -100,9 +99,6 @@ export const appSlices = createSlice({
 			state.itemCount = 0
 			state.total = 0
 		},
-		setBookingObject: (state, action) => {
-			state.bookingObject = action.payload
-		},
 	},
 })
 
@@ -112,14 +108,12 @@ export const {
 	decreaseCartItem,
 	removeCartItem,
 	clearCartItem,
-	setBookingObject,
 } = appSlices.actions
 
 // Selectors
 export const selectCartItems = (state) => state.app.cartItems
 export const selectItemCount = (state) => state.app.itemCount
 export const selectTotal = (state) => state.app.total
-export const selectBookingObject = (state) => state.app.bookingObject
 
 const rootReducer = appSlices.reducer
 

@@ -1,10 +1,9 @@
 import React from 'react'
-import { AiFillFacebook, AiOutlineInstagram } from 'react-icons/ai'
-import { FaTiktok } from 'react-icons/fa'
+import { FiLinkedin, FiFacebook, FiInstagram } from 'react-icons/fi'
 
 function Footer() {
 	return (
-		<footer className="flex bg-neutral-200 flex-col py-5 justify-center items-center lg:rounded-lg border-neutral-700">
+		<footer className="flex bg-neutral-200 flex-col py-5 justify-center items-center rounded-b-[30px] lg:rounded-lg border-neutral-700">
 			<div className="flex text-xs text-neutral-500 font-light">
 				<div className="pr-5 border-r-2 border-r-neutral-800 md:flex">
 					<p className="">
@@ -26,28 +25,28 @@ function Footer() {
 			</div>
 			<div className="flex justify-evenly items-center w-[80%] md:w-[40%] mt-3">
 				<a
-					href="https://www.instagram.com/es.motayo/"
+					href="https://www.instagram.com/chasingmuller/"
 					target="_blank"
 					rel="noopener noreferrer">
-					<AiOutlineInstagram
+					<FiInstagram
 						size={20}
 						className=" text-cyan-900 ease-in duration-300 hover:text-cyan-500"
 					/>
 				</a>
 				<a
-					href="https://www.facebook.com/search/top?q=hairposey"
+					href="https://www.facebook.com/toeneahcassy"
 					target="_blank"
 					rel="noopener noreferrer">
-					<AiFillFacebook
+					<FiFacebook
 						size={20}
 						className="text-cyan-900 ease-in duration-300 hover:text-cyan-500"
 					/>
 				</a>
 				<a
-					href="https://www.tiktok.com/@es.motayo"
+					href="https://www.linkedin.com/in/oluwatosin-isijola-33333ba8/"
 					target="_blank"
 					rel="noopener noreferrer">
-					<FaTiktok
+					<FiLinkedin
 						size={20}
 						className="text-cyan-900 ease-in duration-300 hover:text-cyan-500"
 					/>
