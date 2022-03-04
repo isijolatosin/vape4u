@@ -39,7 +39,7 @@ const Checkout = function () {
 								</Button>
 							</>
 						) : (
-							<div className="flex flex-col w-full px-5 lg:flex-row lg:w-[90%] justify-center items-center lg:items-start">
+							<div className="flex flex-col w-full lg:flex-row lg:w-[90%] justify-center items-center lg:items-start">
 								<div className="w-full lg:w-[40%] xl:w-[50%] mb-5">
 									{cartItems.map((item) => (
 										<CartItems product={item} key={item.id} />
