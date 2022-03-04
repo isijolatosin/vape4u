@@ -156,7 +156,7 @@ const CheckoutForm = ({ total, itemCount }) => {
 
 	return (
 		<div>
-			<div className="flex flex-col max-w-[70%] mx-auto mt-5">
+			<div className="flex flex-col max-w-[100%] md:max-w-[70%] mx-auto mt-5">
 				{!user && (
 					<input
 						type="email"
