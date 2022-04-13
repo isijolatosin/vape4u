@@ -35,25 +35,25 @@ function Management() {
 				<title>Management Portal</title>
 			</Helmet>
 			<Layout>
-				<div className={'pt-20 md:pt-10 flex flex-col w-[100%] items-center'}>
+				<div className={'pt-5 flex flex-col w-[100%] items-center'}>
 					<Heading>Management portal</Heading>
 					<div className="my-5 w-[100%] text-cyan-900 font-bold">
-						<ul className="flex text-xs flex-row items-center justify-between w-[90%] lg:w-[50%] mx-auto">
+						<ul className="flex text-xs flex-row items-center justify-between w-[100%] lg:w-[50%] mx-auto">
 							<li
 								id="all-inventory"
-								className="hover:cursor-pointer bg-violet-50 px-4 py-2 rounded-full hover:bg-violet-100 ease-in duration-300 border-[1px] border-cyan-900"
+								className="hover:cursor-pointer bg-violet-50 px-3 py-[4px] rounded-full hover:bg-violet-100 ease-in duration-300 border-[1px] border-cyan-900"
 								onClick={toggleSection}>
 								All Inventories
 							</li>
 							<li
 								id="inventory"
-								className="hover:cursor-pointer bg-violet-50 px-4 py-2 rounded-full hover:bg-violet-100 ease-in duration-300 border-[1px] border-cyan-900"
+								className="hover:cursor-pointer bg-violet-50 px-3 py-[4px] rounded-full hover:bg-violet-100 ease-in duration-300 border-[1px] border-cyan-900"
 								onClick={toggleSection}>
 								Add to Inventory
 							</li>
 							<li
 								id="shipping"
-								className="hover:cursor-pointer bg-violet-50  px-4 py-2 rounded-full hover:bg-violet-100 ease-in duration-300 border-[1px] border-cyan-900"
+								className="hover:cursor-pointer bg-violet-50  px-3 py-[4px] rounded-full hover:bg-violet-100 ease-in duration-300 border-[1px] border-cyan-900"
 								onClick={toggleSection}>
 								Shipment
 							</li>

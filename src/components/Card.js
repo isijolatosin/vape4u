@@ -49,7 +49,7 @@ function Card({ pen, setSinglePen, scrollToTop }) {
 			</div>
 			<img
 				id={pen.id}
-				src={pen.image}
+				src={pen?.image}
 				alt={pen.name}
 				className="w-[100%] max-h-[100%] md:max-w-[100%] md:max-h-[200px] mt-10 mx-auto object-cover"
 			/>

@@ -22,7 +22,6 @@ const Home = function () {
 			const {
 				data: { products },
 			} = await axios.get('/api/v1/products')
-			console.log(products)
 			setFetchAllBeads(products.filter((b) => b.type.toLowerCase() === 'beads'))
 			setFetchAllHair(products.filter((b) => b.type.toLowerCase() === 'braids'))
 		} catch (error) {
@@ -49,10 +48,10 @@ const Home = function () {
 						<div className="text-cyan-900 ml-[30px] xl:ml-[100px] mt-10 font-bold">
 							<span>Hair and Extensions</span>
 						</div>
-						<div className="w-full justify-center grid md:grid-cols-3 lg:grid-cols-4">
-							{fetchAllHair.slice(0, lastLength).map((pen) => (
+						<div className="w-full justify-center grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+							{fetchAllHair.slice(0, lastLength).map((pen, idx) => (
 								<div
-									key={pen.id}
+									key={idx}
 									className="px-2 mb-5 justify-center items-center flex flex-row">
 									<Card
 										key={pen.id}
@@ -68,10 +67,10 @@ const Home = function () {
 						<div className="text-cyan-900 ml-[30px] xl:ml-[100px] mt-10 font-bold">
 							<span>Beads and Accessories</span>
 						</div>
-						<div className="w-full justify-center grid md:grid-cols-3 lg:grid-cols-4 ">
-							{fetchAllBeads.slice(0, lastLength).map((pen) => (
+						<div className="w-full justify-center grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
+							{fetchAllBeads.slice(0, lastLength).map((pen, idx) => (
 								<div
-									key={pen.id}
+									key={idx}
 									className="px-2 mb-5 justify-center items-center flex flex-row">
 									<Card
 										key={pen.id}
