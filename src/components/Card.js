@@ -10,25 +10,25 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { isInCart } from '../utils/helpers'
 
-function Card({ pen, setSinglePen, scrollToTop }) {
+function Card({ product, setSingleproduct, scrollToTop }) {
 	const cartItems = useSelector(selectCartItems)
 	const dispatch = useDispatch()
 
 	const handlePick = function () {
-		setSinglePen(pen)
+		setSingleproduct(product)
 		scrollToTop()
 	}
 
 	// adding to cart
-	const { desc, id, name, price, url } = pen
-	const singlePen = { desc, id, name, price, url }
+	const { description, _id, name, price, image } = product
+	const singleProduct = { description, _id, name, price, image }
 
 	const addToCart = () => {
-		dispatch(addToCartItem(singlePen))
+		dispatch(addToCartItem(singleProduct))
 	}
 
 	const IncreaseItem = () => {
-		dispatch(increaseCartItem(singlePen))
+		dispatch(increaseCartItem(singleProduct))
 	}
 
 	return (
@@ -37,9 +37,12 @@ function Card({ pen, setSinglePen, scrollToTop }) {
 				<HiViewGrid onClick={handlePick} size={16} />
 			</div>
 			<div className="absolute m-3 top-0 right-0 text-neutral-900 hover:cursor-pointer">
-				{isInCart(singlePen, cartItems) ? (
+				{isInCart(singleProduct, cartItems) ? (
 					<div className="shadow-md border-[1px] border-yellow-400 text-yellow-500 rounded-full p-1">
-						<BsBagPlusFill onClick={IncreaseItem} size={16} />
+						<BsBagPlusFill
+							onClick={cartItems.length !== 0 ? IncreaseItem : null}
+							size={16}
+						/>
 					</div>
 				) : (
 					<div className="shadow-md p-1 rounded-full">
@@ -48,14 +51,14 @@ function Card({ pen, setSinglePen, scrollToTop }) {
 				)}
 			</div>
 			<img
-				id={pen.id}
-				src={pen?.image}
-				alt={pen.name}
+				id={product._id}
+				src={product?.image}
+				alt={product.name}
 				className="w-[100%] max-h-[100%] md:max-w-[100%] md:max-h-[200px] mt-10 mx-auto object-cover"
 			/>
 			<div className="bg-blur absolute bottom-0 w-full h-[70px] rounded-b-[20px] py-2 text-center text-xs text-cyan-900 font-light flex flex-col leading-2 px-3">
-				<span>{pen.name}</span>
-				<span>CA${pen.price}:00</span>
+				<span>{product.name}</span>
+				<span>${product.price}:00</span>
 			</div>
 		</div>
 	)

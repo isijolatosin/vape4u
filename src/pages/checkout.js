@@ -42,7 +42,7 @@ const Checkout = function () {
 							<div className="flex flex-col w-full lg:flex-row lg:w-[90%] justify-center items-center lg:items-start">
 								<div className="w-full lg:w-[40%] xl:w-[50%] mb-5">
 									{cartItems.map((item) => (
-										<CartItems product={item} key={item.id} />
+										<CartItems product={item} key={item._id} />
 									))}
 								</div>
 								<div className="w-full lg:ml-5 xl:ml-5 lg:w-[60%] xl:w-[50%]">

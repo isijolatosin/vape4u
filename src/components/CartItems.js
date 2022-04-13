@@ -12,11 +12,11 @@ import {
 } from '../slices/appSlices'
 
 const CartItems = ({ product }) => {
-	const { name, url, price, description, quantity, id } = product
+	const { name, image, price, description, quantity, id } = product
 	const [expand, setExpand] = React.useState(false)
 	const dispatch = useDispatch()
 
-	const prdct = { name, id, url, price, quantity, description }
+	const prdct = { name, id, image, price, quantity, description }
 	const increaseItem = () => {
 		dispatch(increaseCartItem(prdct))
 	}
@@ -32,22 +32,22 @@ const CartItems = ({ product }) => {
 			<div className="mr-5">
 				<img
 					className="w-[80px] h-[80px] rounded-lg object-contain"
-					src={url}
+					src={image}
 					alt={name}
 				/>
 			</div>
 			<div className="flex flex-row justify-between items-center w-[100%] pr-5">
-				<div className="text-neutral-600 font-light text-sm">
+				<div className="text-neutral-600 font-light text-xs">
 					<div className="font-bold">
 						<h4>{name}</h4>
 					</div>
-					<p>{`Price: $${price}`}</p>
+					<p>{`Price: $${price}`}:00</p>
 					<p>{`Quantity: ${quantity}`}</p>
-					<div className="">
+					<div>
 						{!expand && description?.length >= 100 ? (
-							<span>{description.substring(0, 50)}...</span>
+							<span>description: {description.substring(0, 50)}...</span>
 						) : (
-							<span>{description}</span>
+							<span>Description: {description}</span>
 						)}
 						{description?.length >= 100 && (
 							<span

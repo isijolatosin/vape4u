@@ -4,13 +4,13 @@ import 'firebase/compat/firestore'
 import 'firebase/compat/auth'
 
 const firebaseConfig = {
-	apiKey: 'AIzaSyCLLAOzIV1VDBcE_vyFx0ivy3MjDCJMYyc',
-	authDomain: 'modelest-ead46.firebaseapp.com',
-	projectId: 'modelest-ead46',
-	storageBucket: 'modelest-ead46.appspot.com',
-	messagingSenderId: '305781315708',
-	appId: '1:305781315708:web:fdc351ee737e1300d051f9',
-	measurementId: 'G-M6VVE1FV97',
+	apiKey: 'AIzaSyDcylJeqwtlMQcGyyYNfP2sjj9wEpjBqII',
+	authDomain: 'pvg-international.firebaseapp.com',
+	projectId: 'pvg-international',
+	storageBucket: 'pvg-international.appspot.com',
+	messagingSenderId: '461377296200',
+	appId: '1:461377296200:web:77e80c806cdd832628057d',
+	measurementId: 'G-E12YZMW18D',
 }
 
 !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app()

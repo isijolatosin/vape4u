@@ -16,4 +16,5 @@ export const HTTPS_LINK = 'http://localhost:5000'
 
 export const AUTHORIZED_ID = {
 	id_one: 'tisijola7@gmail.com',
+	id_two: 'pvginternationals@gmail.com',
 }

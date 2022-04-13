@@ -21,7 +21,7 @@ export const appSlices = createSlice({
 		// Add item
 		addToCartItem: (state, action) => {
 			// check if item is in the cart
-			if (!state.cartItems.find((item) => item.id === action.payload.id)) {
+			if (!state.cartItems.find((item) => item._id === action.payload._id)) {
 				state.cartItems.push({
 					...action.payload,
 					quantity: 1,
@@ -41,7 +41,7 @@ export const appSlices = createSlice({
 		// Increase Item
 		increaseCartItem: (state, action) => {
 			const increaseIndex = state.cartItems.findIndex(
-				(item) => item.id === action.payload.id
+				(item) => item._id === action.payload._id
 			)
 
 			state.cartItems[increaseIndex].quantity++
@@ -59,7 +59,7 @@ export const appSlices = createSlice({
 		// Decrease Item
 		decreaseCartItem: (state, action) => {
 			const decreaseIndex = state.cartItems.findIndex(
-				(item) => item.id === action.payload.id
+				(item) => item._id === action.payload._id
 			)
 			const product = state.cartItems[decreaseIndex]
 			if (product.quantity > 1) {
@@ -78,7 +78,7 @@ export const appSlices = createSlice({
 		// Remove Item
 		removeCartItem: (state, action) => {
 			const newCartItems = state.cartItems.filter(
-				(item) => item.id !== action.payload.id
+				(item) => item._id !== action.payload._id
 			)
 
 			state.cartItems = [...newCartItems]
