@@ -1,6 +1,6 @@
 import React from 'react'
 import { HiViewGrid } from 'react-icons/hi'
-import { BsBagFill } from 'react-icons/bs'
+import { BsBag } from 'react-icons/bs'
 import { BsBagPlusFill } from 'react-icons/bs'
 import {
 	addToCartItem,
@@ -43,19 +43,19 @@ function Card({ pen, setSinglePen, scrollToTop }) {
 					</div>
 				) : (
 					<div className="shadow-md p-1 rounded-full">
-						<BsBagFill onClick={addToCart} size={16} />
+						<BsBag onClick={addToCart} size={16} />
 					</div>
 				)}
 			</div>
 			<img
 				id={pen.id}
-				src={pen.url}
+				src={pen.image}
 				alt={pen.name}
-				className="max-w-[90%] max-h-[260px] md:max-w-[90%] md:max-h-[200px] mt-10 mx-auto object-contain"
+				className="w-[100%] max-h-[100%] md:max-w-[100%] md:max-h-[200px] mt-10 mx-auto object-cover"
 			/>
-			<div className="bg-blur absolute bottom-0 w-full h-[100px] rounded-b-[20px] py-2 text-center text-xs text-blue-800 font-bold flex flex-col leading-2 px-3">
+			<div className="bg-blur absolute bottom-0 w-full h-[70px] rounded-b-[20px] py-2 text-center text-xs text-cyan-900 font-light flex flex-col leading-2 px-3">
 				<span>{pen.name}</span>
-				<span>${pen.price}:00</span>
+				<span>CA${pen.price}:00</span>
 			</div>
 		</div>
 	)

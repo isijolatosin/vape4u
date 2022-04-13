@@ -57,7 +57,7 @@ const Nav = function () {
 					))}
 				</div>
 				<Link to="/checkout" className="flex items-center justify-between">
-					<span className="text-xs font-bold">${total}:00</span>
+					<span className="text-xs font-bold">CA${total}:00</span>
 					<div
 						className={
 							itemCount > 0 ? 'ml-5 bg-neutral-200 p-2 rounded-full' : 'ml-5'

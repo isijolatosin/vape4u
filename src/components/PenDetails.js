@@ -37,14 +37,16 @@ const PenDetails = function ({ singlePen }) {
 				<p className="text-2xl font-bold text-blue-800 leading-6 mb-2">
 					{singlePen.name}
 				</p>
-				<p className="text-xs leading-4  text-neutral-500">{singlePen.desc}</p>
+				<p className="text-xs leading-4  text-neutral-500">
+					{singlePen.description}
+				</p>
 			</div>
-			<div className="flex-[0.35] relative m-10 max-w-[230px] md:max-w-[230px] bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500 object-cover rounded-full">
+			<div className="flex-[0.35] relative m-10 w-[100%] md:max-w-[230px] bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500 object-cover rounded-lg">
 				<img
-					id=""
-					src={singlePen.url}
-					alt=""
-					className="w-[300px] object-cover h-[230px] rounded-full shadow-2xl"
+					id={singlePen.id}
+					src={singlePen.image}
+					alt={singlePen.id}
+					className="object-cover h-[380px] w-[100%] rounded-lg object-bottom shadow-2xl"
 				/>
 				<span className="absolute bottom-8 right-[38.2%] text-xs font-bold text-blue-800 px-2 py-[1px] rounded-md bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500">
 					${singlePen.price}:00
