@@ -34,7 +34,7 @@ const Checkout = function () {
 						{cartItems.length === 0 ? (
 							<>
 								<div className="mb-5">Your Cart is Empty</div>
-								<Button type="large" handleFunc={() => navigate('/shop')}>
+								<Button type="large" handleFunc={() => navigate('/')}>
 									Shop now
 								</Button>
 							</>

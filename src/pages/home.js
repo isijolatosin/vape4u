@@ -40,9 +40,9 @@ const Home = function () {
 	const Beauties = () => {
 		return (
 			<div>
-				<div>
+				<div className="border-b-[1px] pb-5">
 					{fetchAllHair && (
-						<div className="text-cyan-900 ml-[30px] xl:ml-[100px] mt-10 font-bold">
+						<div className="text-yellow-100 ml-[30px] xl:ml-[100px] mt-10 font-bold">
 							<span>Hair and Extensions</span>
 						</div>
 					)}
@@ -63,7 +63,7 @@ const Home = function () {
 				</div>
 				<div>
 					{fetchAllBeads && (
-						<div className="text-cyan-900 ml-[30px] xl:ml-[100px] mt-10 font-bold">
+						<div className="text-yellow-500 ml-[30px] xl:ml-[100px] mt-2 font-bold">
 							<span>Beads and Accessories</span>
 						</div>
 					)}
@@ -100,21 +100,21 @@ const Home = function () {
 
 			<Layout>
 				<div className="w-[100%]">
-					<div className="bg-yellow-500 p-10 rounded-[30px] h-[250px]">
-						<div className="flex flex-col md:flex-row justify-between items-center">
-							<span className="text-xs flex-[0.45] text-white mb-5 md:mb-0">
+					<div className="bg-yellow-500 p-5 rounded-[30px] h-[250px]">
+						<div className="flex flex-row justify-between items-center">
+							<span className="text-xs mt-3 md:mt-0 md:flex-[0.45] text-white mb-5 pl-2 md:mb-0">
 								Home<span className="text-black font-bold"> / Shop</span>
 							</span>
-							<div className="flex-[0.55] flex justify-between items-center">
+							<div className="md:flex-[0.55] md:flex md:justify-between">
 								<div className="hidden md:inline">
 									<span className="font-bold mr-28 md:mr-0 text-xl">Shop</span>
 								</div>
-								<div className="flex h-[30px] items-center">
+								<div className="h-[30px] items-center">
 									{/* <span className="text-xs mr-3">
 									Showing 1 - {lastLength} of {fetchAllBeads.length} results
 								</span> */}
 									<select
-										className="mt-3 bg-yellow-100 text-black px-2 w-[120px] border border-gray-100 rounded-md text-xs shadow-sm placeholder-gray-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0 mb-3"
+										className="bg-yellow-100 text-black px-2 w-[120px] border border-gray-100 rounded-md text-xs shadow-sm placeholder-gray-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
 										// onChange={handleOnChange}
 										id="length"
 										// value={bundles.length}
@@ -127,7 +127,7 @@ const Home = function () {
 							</div>
 						</div>
 					</div>
-					<div className="md:mt-[-210px] mt-[-130px] md:p-10 w-full pb-1">
+					<div className="md:mt-[-250px] mt-[-210px] md:p-10 w-full pb-1">
 						{singleProduct.length !== 0 && (
 							<div>
 								<ProductDetails

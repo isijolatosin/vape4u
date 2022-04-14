@@ -37,7 +37,7 @@ function Management() {
 			<Layout>
 				<div className={'pt-5 flex flex-col w-[100%] items-center'}>
 					<Heading>Management portal</Heading>
-					<div className="my-5 w-[100%] text-cyan-900 font-bold">
+					<div className="my-5 w-[90%] text-cyan-900 font-bold">
 						<ul className="flex text-xs flex-row items-center justify-between w-[100%] lg:w-[50%] mx-auto">
 							<li
 								id="all-inventory"

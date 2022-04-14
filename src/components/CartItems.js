@@ -12,11 +12,11 @@ import {
 } from '../slices/appSlices'
 
 const CartItems = ({ product }) => {
-	const { name, image, price, description, quantity, id } = product
+	const { name, image, price, description, quantity, _id } = product
 	const [expand, setExpand] = React.useState(false)
 	const dispatch = useDispatch()
 
-	const prdct = { name, id, image, price, quantity, description }
+	const prdct = { name, _id, image, price, quantity, description }
 	const increaseItem = () => {
 		dispatch(increaseCartItem(prdct))
 	}

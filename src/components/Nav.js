@@ -86,7 +86,7 @@ const Nav = function () {
 							</div>
 						</Link>
 					</div>
-					<div className="text-xs text-cyan-900 ml-5">
+					<div className="text-xs text-yellow-600 ml-5">
 						{!user ? (
 							<span
 								className="hover:cursor-pointer"
