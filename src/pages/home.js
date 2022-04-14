@@ -10,7 +10,6 @@ const Home = function () {
 	const [fetchAllBeads, setFetchAllBeads] = React.useState([])
 	const [fetchAllHair, setFetchAllHair] = React.useState([])
 	const [singleProduct, setSingleProduct] = React.useState([])
-	const [lastLength, setLastLength] = React.useState(8)
 	const filterList = [
 		{ id: '1', name: 'Default sorting' },
 		{ id: '2', name: 'type 1' },
@@ -47,7 +46,7 @@ const Home = function () {
 						</div>
 					)}
 					<div className="w-full justify-center grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-						{fetchAllHair.slice(0, lastLength).map((product) => (
+						{fetchAllHair.map((product) => (
 							<div
 								key={product._id}
 								className="px-2 mb-5 justify-center items-center flex flex-row">
@@ -68,7 +67,7 @@ const Home = function () {
 						</div>
 					)}
 					<div className="w-full justify-center grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
-						{fetchAllBeads.slice(0, lastLength).map((product) => (
+						{fetchAllBeads.map((product) => (
 							<div
 								key={product._id}
 								className="px-2 mb-5 justify-center items-center flex flex-row">
