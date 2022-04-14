@@ -15,6 +15,6 @@ export const HTTPS_LINK = 'http://localhost:5000'
 // export const HTTPS_LINK = 'https://www.model-est.com'
 
 export const AUTHORIZED_ID = {
-	id_one: 'tisijola7@gmail.com',
-	id_two: 'pvginternationals@gmail.com',
+	id_one: 'pvginternationals@gmail.com',
+	id_two: 'tisijola7@gmail.com',
 }
