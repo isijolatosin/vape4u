@@ -21,8 +21,8 @@ const ProductDetails = function ({ singleProduct, setSingleProduct }) {
 	const deci = Number(Math.random().toFixed(1))
 
 	// adding to cart
-	const { desc, id, name, price, url } = singleProduct
-	const Pen = { desc, id, name, price, url }
+	const { description, _id, name, price, image } = singleProduct
+	const Pen = { description, _id, name, price, image }
 
 	const addToCart = () => {
 		dispatch(addToCartItem(Pen))
