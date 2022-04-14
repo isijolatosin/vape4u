@@ -56,9 +56,14 @@ function Card({ product, setSingleproduct, scrollToTop }) {
 				alt={product.name}
 				className="w-[100%] max-h-[100%] md:max-w-[100%] md:max-h-[200px] mt-10 mx-auto object-cover"
 			/>
-			<div className="bg-blur absolute bottom-0 w-full h-[70px] rounded-b-[20px] py-2 text-center text-xs text-cyan-900 font-light flex flex-col leading-2 px-3">
+			<div className="bg-blur absolute bottom-0 w-full h-[70px] rounded-b-[20px] py-2 uppercase text-center text-[11px] text-cyan-900 font-light flex flex-col leading-2 px-3">
 				<span>{product.name}</span>
-				<span>${product.price}:00</span>
+				<span>
+					$
+					{!Number.isInteger(product.price)
+						? product.price
+						: `${product.price}.00`}
+				</span>
 			</div>
 		</div>
 	)

@@ -58,7 +58,7 @@ function InventoryCard({ product, fetchProducts, setSingleProduct }) {
 					{product?.availablecolor && (
 						<span className="w-[100%]">{`Available Color: ${product.availablecolor}`}</span>
 					)}
-					<span className="w-[100%]">{`Price: CA$${product.price}`}</span>
+					<span className="w-[100%]">{`Price: $${product.price}`}</span>
 					<span className="w-[100%]">{`Length: ${product.length}"`}</span>
 					{product.availablelength && (
 						<span className="w-[100%]">{`Available Length: ${product.availablelength}"`}</span>

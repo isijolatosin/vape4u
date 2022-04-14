@@ -33,28 +33,35 @@ const ProductDetails = function ({ singleProduct, setSingleProduct }) {
 	}
 
 	return (
-		<div className="relative flex flex-col w-[100%] mx-auto md:w-full py-10 md:py-0 md:flex-row items-center justify-center bg-gradient-to-r from-yellow-100 via-yellow-50 to-yellow-100 rounded-[30px] ">
-			<div className="flex-[0.3]">
+		<div className="relative flex flex-col w-[100%] mx-auto md:w-full p-1 py-10 md:py-0 md:flex-row items-center justify-center bg-gradient-to-r from-yellow-100 via-yellow-50 to-yellow-100 rounded-[30px] ">
+			<div className="flex-[0.4] border-b-[1px] pb-5">
 				<p className="text-xl font-bold text-blue-800 leading-6 mb-2">
 					{singleProduct.name}
 				</p>
 				<p className="text-xs leading-4  text-neutral-500">
 					{singleProduct.description}
 				</p>
+				<div className="text-xs mt-3 flex justify-between mx-1 font-bold">
+					<span>Length: {singleProduct.length}"</span>
+					<span>Color: {singleProduct.color}</span>
+				</div>
 			</div>
-			<div className="flex-[0.35] relative m-10 w-[100%] md:max-w-[230px] bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500 object-cover rounded-lg">
+			<div className="flex-[0.4] relative m-10 w-[100%] md:max-w-[230px] bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500 object-cover rounded-lg">
 				<img
 					id={singleProduct.id}
 					src={singleProduct.image}
 					alt={singleProduct.id}
-					className="object-cover h-[380px] w-[100%] rounded-lg object-bottom shadow-2xl"
+					className="object-contain h-[380px] w-[100%] rounded-lg object-bottom shadow-2xl"
 				/>
 				<span className="absolute bottom-8 right-[38.2%] text-xs font-bold text-blue-800 px-2 py-[1px] rounded-md bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500">
-					${singleProduct.price}:00
+					$
+					{!Number.isInteger(singleProduct.price)
+						? singleProduct.price
+						: `${singleProduct.price}.00`}
 				</span>
 			</div>
 			<div>
-				<div className="flex-[0.3] text-xs flex flex-col font-bold">
+				<div className="flex-[0.2] text-xs flex flex-col font-bold">
 					<div className="flex">
 						<span>Review: </span>
 						{Array(rating)

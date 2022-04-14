@@ -10,6 +10,7 @@ const Home = function () {
 	const [fetchAllBeads, setFetchAllBeads] = React.useState([])
 	const [fetchAllHair, setFetchAllHair] = React.useState([])
 	const [singleProduct, setSingleProduct] = React.useState([])
+	// const [lastLength, setLastLength] = React.useState(4)
 	const filterList = [
 		{ id: '1', name: 'Default sorting' },
 		{ id: '2', name: 'type 1' },
@@ -21,8 +22,12 @@ const Home = function () {
 			const {
 				data: { products },
 			} = await axios.get('/api/v1/products')
-			setFetchAllBeads(products.filter((b) => b.type.toLowerCase() === 'beads'))
-			setFetchAllHair(products.filter((b) => b.type.toLowerCase() === 'braids'))
+			setFetchAllBeads(
+				products.filter((b) => b.type.toLowerCase().includes('bead'))
+			)
+			setFetchAllHair(
+				products.filter((b) => b.type.toLowerCase().includes('braid'))
+			)
 		} catch (error) {
 			console.log(error)
 		}
@@ -38,10 +43,10 @@ const Home = function () {
 
 	const Beauties = () => {
 		return (
-			<div>
+			<div className="mt-[-40px]">
 				<div className="border-b-[1px] pb-5">
 					{fetchAllHair && (
-						<div className="text-yellow-100 ml-[30px] xl:ml-[100px] mt-10 font-bold">
+						<div className="text-gray-500 ml-[30px] xl:ml-[100px] mt-10 font-normal">
 							<span>Hair and Extensions</span>
 						</div>
 					)}
@@ -62,7 +67,7 @@ const Home = function () {
 				</div>
 				<div>
 					{fetchAllBeads && (
-						<div className="text-yellow-500 ml-[30px] xl:ml-[100px] mt-2 font-bold">
+						<div className="text-gray-500 ml-[30px] xl:ml-[100px] mt-2 font-normal">
 							<span>Beads and Accessories</span>
 						</div>
 					)}
@@ -126,7 +131,7 @@ const Home = function () {
 							</div>
 						</div>
 					</div>
-					<div className="md:mt-[-250px] mt-[-180px] md:p-10 w-full pb-1">
+					<div className="md:mt-[-230px] mt-[-180px] md:p-10 w-full pb-1">
 						{singleProduct.length !== 0 && (
 							<div>
 								<ProductDetails
@@ -143,17 +148,6 @@ const Home = function () {
 							</div>
 						)}
 					</div>
-					{/* {fetchAllBeads && lastLength !== fetchAllBeads.length && (
-					<div
-						onClick={() => {
-							if (lastLength !== fetchAllBeads.length) {
-								setLastLength(lastLength + 4)
-							}
-						}}
-						className="text-sm text-blue-800 font-bold text-center mb-5 hover:cursor-pointer hover:text-blue-500">
-						Load More
-					</div>
-				)} */}
 				</div>
 			</Layout>
 		</>
