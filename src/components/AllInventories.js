@@ -163,7 +163,7 @@ function AllInventories() {
 				data: {
 					image: { src },
 				},
-			} = await axios.post('/api/v1/uploadsController', formData, {
+			} = await axios.post('/api/v1/products/uploads', formData, {
 				headers: {
 					'Content-Type': 'multipart/form-data',
 				},
