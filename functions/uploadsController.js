@@ -1,6 +1,6 @@
 const path = require('path')
 const { StatusCodes } = require('http-status-codes')
-const CustomAPIError = require('../errors')
+const CustomAPIError = require('../server/errors')
 const cloudinary = require('cloudinary').v2
 const fs = require('fs')
 
