@@ -8,9 +8,9 @@ function Inventory() {
 	const [formData, setFormData] = React.useState({
 		title: '',
 		type: '',
+		color: '',
 		price: '',
 		length: '',
-		availablelength: '',
 		description: '',
 	})
 	const [imageFile, setImageFile] = React.useState('')
@@ -33,7 +33,6 @@ function Inventory() {
 				color: formData.color,
 				price: formData.price,
 				length: formData.length,
-				availablelength: formData.availablelength,
 				description: formData.description,
 				sales: isTrue,
 				image: imageFile,
@@ -50,7 +49,6 @@ function Inventory() {
 			color: '',
 			price: '',
 			length: '',
-			availablelength: '',
 			description: '',
 		})
 		setIsTrue(false)
@@ -79,25 +77,11 @@ function Inventory() {
 			placeholder: 'Product Color...',
 		},
 		{
-			id: '4',
-			name: 'availablecolor',
-			type: 'text',
-			value: formData.availablecolor,
-			placeholder: 'Available Color...',
-		},
-		{
 			id: '5',
 			name: 'length',
 			type: 'number',
 			value: formData.length,
 			placeholder: 'Length...',
-		},
-		{
-			id: '6',
-			name: 'availablelength',
-			type: 'text',
-			value: formData.availablelength,
-			placeholder: 'Available Lengths...',
 		},
 		{
 			id: '7',
@@ -122,7 +106,6 @@ function Inventory() {
 					'Content-Type': 'multipart/form-data',
 				},
 			})
-
 			setImageFile(src)
 		} catch (error) {
 			console.log(error)

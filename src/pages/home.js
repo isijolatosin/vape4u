@@ -46,7 +46,7 @@ const Home = function () {
 			<div className="mt-[-40px]">
 				<div className="border-b-[1px] pb-5">
 					{fetchAllHair && (
-						<div className="text-gray-500 ml-[30px] xl:ml-[100px] mt-10 font-normal">
+						<div className="text-gray-700 ml-[30px] xl:ml-[100px] mt-10 font-normal">
 							<span>Hair and Extensions</span>
 						</div>
 					)}
@@ -131,7 +131,7 @@ const Home = function () {
 							</div>
 						</div>
 					</div>
-					<div className="md:mt-[-230px] mt-[-180px] md:p-10 w-full pb-1">
+					<div className="md:mt-[-230px] mt-[-220px] md:p-10 w-full pb-1">
 						{singleProduct.length !== 0 && (
 							<div>
 								<ProductDetails
