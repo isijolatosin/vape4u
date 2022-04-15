@@ -2,6 +2,7 @@ const path = require('path')
 const { StatusCodes } = require('http-status-codes')
 const CustomAPIError = require('../errors')
 const cloudinary = require('cloudinary').v2
+const fs = require('fs')
 
 const uploadProductImageLocal = async (req, res) => {
 	if (!req.files) {
@@ -41,6 +42,7 @@ const uploadProductImage = async (req, res) => {
 			folder: 'pvg-upload',
 		}
 	)
+	fs.unlinkSync(req.files.image.tempFilePath)
 	return res.status(StatusCodes.OK).json({ image: { src: result.secure_url } })
 }
 

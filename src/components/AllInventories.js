@@ -20,7 +20,7 @@ function AllInventories() {
 			const {
 				data: { products },
 			} = await axios.get('/api/v1/products')
-			setFetchAllData(products)
+			setFetchAllData(products.sort((a, b) => a.type.localeCompare(b.type)))
 		} catch (error) {
 			console.log(error)
 		}
@@ -72,20 +72,6 @@ function AllInventories() {
 			sales: singleProduct.sales,
 		})
 	}
-	const handleInputAvailableColor = (e) => {
-		setSingleProduct({
-			id: singleProduct.id,
-			name: singleProduct.name,
-			type: singleProduct.type,
-			color: singleProduct.color,
-			availablecolor: e.target.value,
-			price: Number(singleProduct.price),
-			length: Number(singleProduct.length),
-			availablelength: singleProduct.availablelength,
-			description: singleProduct.description,
-			sales: singleProduct.sales,
-		})
-	}
 	const handleInputLen = (e) => {
 		setSingleProduct({
 			id: singleProduct.id,
@@ -96,20 +82,6 @@ function AllInventories() {
 			price: Number(singleProduct.price),
 			length: e.target.value,
 			availablelength: singleProduct.availablelength,
-			description: singleProduct.description,
-			sales: singleProduct.sales,
-		})
-	}
-	const handleInputAvailableLen = (e) => {
-		setSingleProduct({
-			id: singleProduct.id,
-			name: singleProduct.name,
-			type: singleProduct.type,
-			color: singleProduct.color,
-			availablecolor: singleProduct.availablecolor,
-			price: Number(singleProduct.price),
-			length: Number(singleProduct.length),
-			availablelength: e.target.value,
 			description: singleProduct.description,
 			sales: singleProduct.sales,
 		})
