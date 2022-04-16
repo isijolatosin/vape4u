@@ -9,7 +9,7 @@ function AllInventories() {
 	const [singleProduct, setSingleProduct] = React.useState()
 	const [postError, setPostError] = React.useState('')
 	const [isTrue, setIsTrue] = React.useState(false)
-	const [imageFile, setImageFile] = React.useState('')
+	// const [imageFile, setImageFile] = React.useState('')
 
 	const togglePassword = () => {
 		setIsTrue(!isTrue)
@@ -129,7 +129,7 @@ function AllInventories() {
 				availablelength: singleProduct.availablelength,
 				description: singleProduct.description,
 				sales: isTrue,
-				image: imageFile,
+				// image: imageFile,
 			}
 			if (
 				product.name === '' ||
@@ -153,27 +153,27 @@ function AllInventories() {
 		fetchProducts()
 	}
 
-	const uploadFile = async (e) => {
-		e.preventDefault()
-		const imageFile = e.target.files[0]
-		const formData = new FormData()
-		formData.append('image', imageFile)
-		try {
-			const {
-				data: {
-					image: { src },
-				},
-			} = await axios.post('/api/v1/products/uploads', formData, {
-				headers: {
-					'Content-Type': 'multipart/form-data',
-				},
-			})
-
-			setImageFile(src)
-		} catch (error) {
-			console.log(error)
-		}
-	}
+	// 	const uploadFile = async (e) => {
+	// 		e.preventDefault()
+	// 		const imageFile = e.target.files[0]
+	// 		const formData = new FormData()
+	// 		formData.append('image', imageFile)
+	// 		try {
+	// 			const {
+	// 				data: {
+	// 					image: { src },
+	// 				},
+	// 			} = await axios.post('/api/v1/products/uploads', formData, {
+	// 				headers: {
+	// 					'Content-Type': 'multipart/form-data',
+	// 				},
+	// 			})
+	//
+	// 			setImageFile(src)
+	// 		} catch (error) {
+	// 			console.log(error)
+	// 		}
+	// 	}
 
 	return (
 		<div>
