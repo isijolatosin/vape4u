@@ -38,7 +38,7 @@ const ProductDetails = function ({ singleProduct, setSingleProduct }) {
 				<p className="text-xl font-bold text-blue-800 leading-6 mb-2">
 					{singleProduct.name}
 				</p>
-				<p className="text-xs leading-4  text-neutral-500">
+				<p className="text-xs leading-4 uppercase text-neutral-500">
 					{singleProduct.description}
 				</p>
 				<div className="text-xs mt-3 flex justify-between mx-1 font-bold">
