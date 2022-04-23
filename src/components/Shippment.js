@@ -201,7 +201,7 @@ function Shippment() {
 					{shippingInfo?.shippingHeader?.length === 0 &&
 					shippingInfo?.shippingHeader?.length === 0 ? (
 						isLoading ? (
-							<span>Loading...</span>
+							<span>Please hold, fetching PVG data...</span>
 						) : (
 							<span>Data not Found</span>
 						)

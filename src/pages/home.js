@@ -206,7 +206,7 @@ const Home = function () {
 							)
 						) : (
 							<div className="text-center my-10 text-xs text-neutral-50">
-								Loading Extensions...
+								Please hold, fetching PVG data...
 							</div>
 						)}
 					</div>

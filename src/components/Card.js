@@ -32,7 +32,7 @@ function Card({ product, setSingleproduct, scrollToTop }) {
 	}
 
 	return (
-		<div className="bg-neutral-50 w-full h-full md:w-[230px] md:h-[270px] relative rounded-[20px] mt-5 shadow-2xl">
+		<div className="bg-neutral-50 w-full h-[300px] md:w-[230px] md:h-[270px] relative rounded-[7px] mt-5 shadow-2xl">
 			<div className="absolute m-3 top-0 left-0 rounded-full p-1 text-neutral-600 shadow-md hover:cursor-pointer">
 				<HiViewGrid onClick={handlePick} size={16} />
 			</div>
@@ -54,16 +54,19 @@ function Card({ product, setSingleproduct, scrollToTop }) {
 				id={product._id}
 				src={product?.image}
 				alt={product.name}
-				className="w-[100%] max-h-[100%] md:max-w-[100%] md:max-h-[200px] mt-10 mx-auto object-cover"
+				className="w-[100%] max-h-[80%] md:max-w-[100%] md:max-h-[200px] mt-10 mx-auto object-contain  border-t-[1px] border-gray-100"
 			/>
 			<div className="bg-blur absolute bottom-0 w-full h-[70px] rounded-b-[20px] py-2 uppercase text-center text-[11px] text-cyan-900 font-light flex flex-col leading-2 px-3">
 				<span>{product.name}</span>
-				<span>
-					$
-					{!Number.isInteger(product.price)
-						? product.price
-						: `${product.price}.00`}
-				</span>
+				<div className="flex flex-row justify-between items-center w-[90%] mx-auto">
+					<span className="lowercase font-bold">Color: {product.color}</span>
+					<span className="font-bold">
+						$
+						{!Number.isInteger(product.price)
+							? product.price
+							: `${product.price}.00`}
+					</span>
+				</div>
 			</div>
 		</div>
 	)
