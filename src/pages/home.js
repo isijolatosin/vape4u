@@ -10,7 +10,9 @@ const Home = function () {
 	const [fetchAllBeads, setFetchAllBeads] = React.useState([])
 	const [fetchAllHair, setFetchAllHair] = React.useState([])
 	const [singleProduct, setSingleProduct] = React.useState([])
-	const [selectedProduct, setSelectedProduct] = React.useState('')
+	const [selectedProduct, setSelectedProduct] = React.useState(
+		'Filter Products by Categories'
+	)
 	// const [lastLength, setLastLength] = React.useState(4)
 	const filterList = [
 		{ id: '1', name: 'Filter Products by Categories' },
@@ -97,7 +99,7 @@ const Home = function () {
 
 	const FilteredByProduct = () => {
 		return (
-			selectedProduct !== 'Filter' &&
+			selectedProduct !== 'Filter Products by Categories' &&
 			(selectedProduct === 'Hair & Extensions' ? (
 				<div className="border-b-[1px] pb-5">
 					{fetchAllHair && (
@@ -123,7 +125,7 @@ const Home = function () {
 			) : (
 				<div>
 					{fetchAllBeads && (
-						<div className="text-gray-500 ml-[30px] xl:ml-[100px] mt-2 font-normal">
+						<div className="text-gray-500 ml-[30px] xl:ml-[100px] mt-10 font-normal">
 							<span>Beads and Accessories</span>
 						</div>
 					)}
@@ -187,7 +189,7 @@ const Home = function () {
 							</div>
 						</div>
 					</div>
-					<div className="md:mt-[-230px] mt-[-220px] md:p-10 w-full pb-1">
+					<div className="md:mt-[-230px] mt-[-200px] md:p-10 w-full pb-1">
 						{singleProduct.length !== 0 && (
 							<div>
 								<ProductDetails
@@ -197,7 +199,7 @@ const Home = function () {
 							</div>
 						)}
 						{fetchAllBeads && fetchAllHair && prod ? (
-							selectedProduct !== '' ? (
+							selectedProduct !== 'Filter Products by Categories' ? (
 								<FilteredByProduct />
 							) : (
 								<Beauties />
