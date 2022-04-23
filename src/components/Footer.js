@@ -7,7 +7,8 @@ function Footer() {
 			<div className="flex text-xs text-neutral-500 font-light">
 				<div className="pr-5 border-r-2 border-r-neutral-800 md:flex">
 					<p className="">
-						&copy; {new Date().getUTCFullYear()} <span>vape4u</span>
+						&copy; {new Date().getUTCFullYear()}{' '}
+						<span>PVG International S</span>
 					</p>
 					<span>• All right reserved</span>
 				</div>
