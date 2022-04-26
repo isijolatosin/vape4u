@@ -1,5 +1,5 @@
 import React from 'react'
-import { HiViewGrid } from 'react-icons/hi'
+import { GiExpand } from 'react-icons/gi'
 import { BsBag } from 'react-icons/bs'
 import { BsBagPlusFill } from 'react-icons/bs'
 import {
@@ -34,7 +34,7 @@ function Card({ product, setSingleproduct, scrollToTop }) {
 	return (
 		<div className="bg-neutral-50 w-full h-[300px] md:w-[230px] md:h-[270px] relative rounded-[7px] mt-5 shadow-2xl">
 			<div className="absolute m-3 top-0 left-0 rounded-full p-1 text-neutral-600 shadow-md hover:cursor-pointer">
-				<HiViewGrid onClick={handlePick} size={16} />
+				<GiExpand onClick={handlePick} size={16} />
 			</div>
 			<div className="absolute m-3 top-0 right-0 text-neutral-900 hover:cursor-pointer">
 				{isInCart(singleProduct, cartItems) ? (
