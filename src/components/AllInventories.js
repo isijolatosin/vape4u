@@ -8,11 +8,15 @@ function AllInventories() {
 	const [fetchAllData, setFetchAllData] = React.useState([])
 	const [singleProduct, setSingleProduct] = React.useState()
 	const [postError, setPostError] = React.useState('')
-	const [isTrue, setIsTrue] = React.useState(false)
+	const [isTrueSales, setIsTrueSales] = React.useState(false)
+	const [isTrueInstock, setIsTrueInstock] = React.useState(false)
 	// const [imageFile, setImageFile] = React.useState('')
 
-	const togglePassword = () => {
-		setIsTrue(!isTrue)
+	const toggleSales = () => {
+		setIsTrueSales(!isTrueSales)
+	}
+	const toggleInstock = () => {
+		setIsTrueInstock(!isTrueInstock)
 	}
 
 	async function fetchProducts() {
@@ -128,18 +132,9 @@ function AllInventories() {
 				length: singleProduct.length,
 				availablelength: singleProduct.availablelength,
 				description: singleProduct.description,
-				sales: isTrue,
+				sales: isTrueSales,
+				instock: isTrueInstock,
 				// image: imageFile,
-			}
-			if (
-				product.name === '' ||
-				product.type === '' ||
-				product.color === '' ||
-				product.price === null ||
-				product.length === null ||
-				product.description === ''
-			) {
-				return setPostError('Missing Credentials')
 			}
 			await axios.patch(`/api/v1/products/${id}`, product)
 			setPostError('')
@@ -152,28 +147,6 @@ function AllInventories() {
 
 		fetchProducts()
 	}
-
-	// 	const uploadFile = async (e) => {
-	// 		e.preventDefault()
-	// 		const imageFile = e.target.files[0]
-	// 		const formData = new FormData()
-	// 		formData.append('image', imageFile)
-	// 		try {
-	// 			const {
-	// 				data: {
-	// 					image: { src },
-	// 				},
-	// 			} = await axios.post('/api/v1/products/uploads', formData, {
-	// 				headers: {
-	// 					'Content-Type': 'multipart/form-data',
-	// 				},
-	// 			})
-	//
-	// 			setImageFile(src)
-	// 		} catch (error) {
-	// 			console.log(error)
-	// 		}
-	// 	}
 
 	return (
 		<div>
@@ -269,18 +242,33 @@ function AllInventories() {
 									className="block w-full text-sm text-gray-500 file:mr-4 file:py-1 file:px-4 file:rounded file:border-0 file:text-sm file:bg-gray-200 file:text-violet-700 hover:file:bg-violet-100 ease-in duration-300"
 								/>
 							</div> */}
-							<div className="rounded flex flex-row items-center mt-5 shadow-xl p-2">
-								<label className="mr-3 text-gray-500 text-sm">Sales</label>
-								<input
-									type="checkbox"
-									checked={isTrue}
-									className={
-										isTrue
-											? 'ml-2 rounded-full bg-violet-400'
-											: 'ml-2 rounded-full bg-none border-violet-200'
-									}
-									onChange={togglePassword}
-								/>
+							<div className="flex">
+								<div className="rounded flex flex-row items-center mt-5 mr-10 shadow-xl p-2">
+									<label className="mr-3 text-gray-500 text-sm">Sales</label>
+									<input
+										type="checkbox"
+										checked={isTrueSales}
+										className={
+											isTrueSales
+												? 'ml-2 rounded-full bg-violet-400'
+												: 'ml-2 rounded-full bg-none border-violet-200'
+										}
+										onChange={toggleSales}
+									/>
+								</div>
+								<div className="rounded flex flex-row items-center mt-5 shadow-xl p-2">
+									<label className="mr-3 text-gray-500 text-sm">In stock</label>
+									<input
+										type="checkbox"
+										checked={isTrueInstock}
+										className={
+											isTrueInstock
+												? 'ml-2 rounded-full bg-violet-400'
+												: 'ml-2 rounded-full bg-none border-violet-200'
+										}
+										onChange={toggleInstock}
+									/>
+								</div>
 							</div>
 							{postError && (
 								<span className="text-xs text-red-700 mt-5">{`Error: ${postError}`}</span>

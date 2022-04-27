@@ -5,8 +5,10 @@ function InventoryForm({
 	inputTypes,
 	handleformDataChange,
 	formData,
-	isTrue,
-	togglePassword,
+	isTrueSales,
+	isTrueInstock,
+	toggleSales,
+	toggleInstock,
 	postError,
 	buttonText,
 	uploadFile,
@@ -48,18 +50,33 @@ function InventoryForm({
 						className="block w-full text-sm text-gray-500 file:mr-4 file:py-1 file:px-4 file:rounded file:border-0 file:text-sm file:bg-gray-200 file:text-cyan-700 hover:file:bg-cyan-100 ease-in duration-300"
 					/>
 				</div>
-				<div className="rounded flex flex-row items-center mt-5 shadow-xl p-2">
-					<label className="mr-3 text-gray-500 text-sm">Sales</label>
-					<input
-						type="checkbox"
-						checked={isTrue}
-						className={
-							isTrue
-								? 'ml-2 rounded-full bg-cyan-400'
-								: 'ml-2 rounded-full bg-none border-cyan-200'
-						}
-						onChange={togglePassword}
-					/>
+				<div className="flex">
+					<div className="rounded flex flex-row items-center mt-5 mr-10 shadow-xl p-2">
+						<label className="mr-3 text-gray-500 text-sm">Sales</label>
+						<input
+							type="checkbox"
+							checked={isTrueSales}
+							className={
+								isTrueSales
+									? 'ml-2 rounded-full bg-cyan-400'
+									: 'ml-2 rounded-full bg-none border-cyan-200'
+							}
+							onChange={toggleSales}
+						/>
+					</div>
+					<div className="rounded flex flex-row items-center mt-5 shadow-xl p-2">
+						<label className="mr-3 text-gray-500 text-sm">In stock</label>
+						<input
+							type="checkbox"
+							checked={isTrueInstock}
+							className={
+								isTrueInstock
+									? 'ml-2 rounded-full bg-cyan-400'
+									: 'ml-2 rounded-full bg-none border-cyan-200'
+							}
+							onChange={toggleSales}
+						/>
+					</div>
 				</div>
 				{postError && (
 					<span className="text-xs text-red-700 mt-5">{`Error: ${postError}`}</span>

@@ -41,7 +41,7 @@ const CartItems = ({ product }) => {
 					<div className="font-bold">
 						<h4>{name}</h4>
 					</div>
-					<p>{`Price: $${price}`}:00</p>
+					<p>{`Price: $${price}`}</p>
 					<p>{`Quantity: ${quantity}`}</p>
 					<div>
 						{!expand && description?.length >= 100 ? (

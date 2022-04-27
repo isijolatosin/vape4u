@@ -67,7 +67,9 @@ const Nav = function () {
 				</div>
 				<div className="flex items-center">
 					<div className="flex items-center">
-						<span className="text-xs font-bold -mr-4">${total}:00</span>
+						{total > 0 && (
+							<span className="text-xs font-bold -mr-4">${total}</span>
+						)}
 						<Link to="/checkout" className="flex items-center justify-between">
 							<div
 								className={

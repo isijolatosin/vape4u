@@ -33,7 +33,15 @@ function Card({ product, setSingleproduct, scrollToTop }) {
 
 	return (
 		<div className="bg-neutral-50 w-full h-[300px] md:w-[230px] md:h-[270px] relative rounded-[7px] mt-5 shadow-2xl">
-			<div className="absolute m-3 top-0 left-0 rounded-full p-1 text-neutral-600 shadow-md hover:cursor-pointer">
+			{product.instock && (
+				<div className="text-white text-sm bg-yellow-500 absolute w-[30%] text-center top-[13px]">
+					sold out
+				</div>
+			)}
+			<div
+				className={`absolute m-3 top-0 ${
+					product.instock ? 'left-16' : 'left-0'
+				} rounded-full p-1 text-neutral-600 shadow-md hover:cursor-pointer`}>
 				<GiExpand onClick={handlePick} size={16} />
 			</div>
 			<div className="absolute m-3 top-0 right-0 text-neutral-900 hover:cursor-pointer">
@@ -50,13 +58,14 @@ function Card({ product, setSingleproduct, scrollToTop }) {
 					</div>
 				)}
 			</div>
+
 			<img
 				id={product._id}
 				src={product?.image}
 				alt={product.name}
 				className="w-[100%] max-h-[80%] md:max-w-[100%] md:max-h-[200px] mt-10 mx-auto object-contain  border-t-[1px] border-gray-100"
 			/>
-			<div className="bg-blur absolute bottom-0 w-full h-[70px] rounded-b-[20px] py-2 uppercase text-center text-[11px] text-cyan-900 font-light flex flex-col leading-2 px-3">
+			<div className="bg-blur absolute bottom-0 w-full h-[70px] rounded-b-[20px] pt-2 uppercase text-center text-[11px] text-cyan-900 font-light flex flex-col leading-2 px-3">
 				<span>{product.name}</span>
 				<div className="flex flex-row justify-between items-center w-[90%] mx-auto">
 					<span className="lowercase font-bold">Color: {product.color}</span>
@@ -68,6 +77,11 @@ function Card({ product, setSingleproduct, scrollToTop }) {
 					</span>
 				</div>
 			</div>
+			{product.sales && (
+				<div className="text-white text-sm bg-black absolute w-[30%] text-center top-[40px]">
+					sales
+				</div>
+			)}
 		</div>
 	)
 }
