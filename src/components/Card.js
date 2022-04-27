@@ -34,7 +34,7 @@ function Card({ product, setSingleproduct, scrollToTop }) {
 	return (
 		<div className="bg-neutral-50 w-full h-[300px] md:w-[230px] md:h-[270px] relative rounded-[7px] mt-5 shadow-2xl">
 			{product.instock && (
-				<div className="text-white font-light text-sm bg-yellow-500 absolute w-[30%] text-center top-[18px]">
+				<div className="text-white font-light text-sm bg-yellow-500 absolute w-[38%] text-center top-[18px]">
 					sold out
 				</div>
 			)}

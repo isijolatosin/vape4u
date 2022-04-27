@@ -35,7 +35,20 @@ const CheckoutForm = ({ total, itemCount }) => {
 	const dispatch = useDispatch()
 	const { user } = useContext(UserContext)
 	const inputOnchangeHandler = (e) => {
-		setAddress({ ...address, [e.target.name]: e.target.value })
+		let value = e.target.value
+		if (
+			e.target.value.toLowerCase() === 'united states of america' ||
+			e.target.value.toLowerCase() === 'america'
+		) {
+			value = 'usa'
+		}
+		if (
+			e.target.value.toLowerCase() === 'united kingdom' ||
+			e.target.value.toLowerCase() === 'london'
+		) {
+			value = 'uk'
+		}
+		setAddress({ ...address, [e.target.name]: value })
 	}
 
 	// Submit address
@@ -113,7 +126,11 @@ const CheckoutForm = ({ total, itemCount }) => {
 
 			setClientSecret(data.clientSecret.split("'")?.[0])
 		} catch (error) {
-			set_Error(error?.response?.data ? 'Please contact modelEst Admin...' : '')
+			set_Error(
+				error?.response?.data
+					? 'Please contact PVG International-S Admin...'
+					: ''
+			)
 		}
 	}
 
@@ -201,7 +218,7 @@ const CheckoutForm = ({ total, itemCount }) => {
 					type="text"
 					value={address.province}
 					onChange={inputOnchangeHandler}
-					placeholder="Province"
+					placeholder="Province / State"
 					className={
 						error && !address.province
 							? 'user-email-input input-error'
@@ -213,7 +230,7 @@ const CheckoutForm = ({ total, itemCount }) => {
 					type="text"
 					value={address.postalcode}
 					onChange={inputOnchangeHandler}
-					placeholder="Postal Code"
+					placeholder="Postal-Code / Zip-code"
 					className={
 						error && !address.postalcode
 							? 'user-email-input input-error'
@@ -225,7 +242,7 @@ const CheckoutForm = ({ total, itemCount }) => {
 					type="text"
 					value={address.country}
 					onChange={inputOnchangeHandler}
-					placeholder="Country"
+					placeholder="Country - usa / uk / canada"
 					className={
 						error && !address.country
 							? 'user-email-input input-error'
