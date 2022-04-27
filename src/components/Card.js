@@ -34,13 +34,13 @@ function Card({ product, setSingleproduct, scrollToTop }) {
 	return (
 		<div className="bg-neutral-50 w-full h-[300px] md:w-[230px] md:h-[270px] relative rounded-[7px] mt-5 shadow-2xl">
 			{product.instock && (
-				<div className="text-white text-sm bg-yellow-500 absolute w-[30%] text-center top-[13px]">
+				<div className="text-white font-light text-sm bg-yellow-500 absolute w-[30%] text-center top-[18px]">
 					sold out
 				</div>
 			)}
 			<div
 				className={`absolute m-3 top-0 ${
-					product.instock ? 'left-16' : 'left-0'
+					product.instock ? 'left-14' : 'left-0'
 				} rounded-full p-1 text-neutral-600 shadow-md hover:cursor-pointer`}>
 				<GiExpand onClick={handlePick} size={16} />
 			</div>
@@ -78,7 +78,7 @@ function Card({ product, setSingleproduct, scrollToTop }) {
 				</div>
 			</div>
 			{product.sales && (
-				<div className="text-white text-sm bg-black absolute w-[30%] text-center top-[40px]">
+				<div className="text-white font-light text-sm bg-black absolute w-[30%] text-center top-[40px]">
 					sales
 				</div>
 			)}

@@ -25,12 +25,14 @@ const Home = function () {
 			const {
 				data: { products },
 			} = await axios.get('/api/v1/products')
-			setFetchAllBeads(
-				products.filter((b) => b.type.toLowerCase().includes('bead'))
-			)
-			setFetchAllHair(
-				products.filter((b) => b.type.toLowerCase().includes('braid'))
-			)
+			setTimeout(() => {
+				setFetchAllBeads(
+					products.filter((b) => b.type.toLowerCase().includes('bead'))
+				)
+				setFetchAllHair(
+					products.filter((b) => b.type.toLowerCase().includes('braid'))
+				)
+			}, 1900)
 		} catch (error) {
 			console.log(error)
 		}
@@ -205,8 +207,8 @@ const Home = function () {
 								<Beauties />
 							)
 						) : (
-							<div className="text-center my-10 text-xs text-neutral-50">
-								Please hold, fetching PVG data...
+							<div className="scanner">
+								<h1>Fetching PVG data...</h1>
 							</div>
 						)}
 					</div>
