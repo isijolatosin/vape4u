@@ -20,6 +20,12 @@ const Success = () => {
 	const payload = localStorage.getItem('payload')
 
 	React.useEffect(() => {
+		setTimeout(() => {
+			localStorage.setItem('payload', '')
+		}, 3000)
+	}, [])
+
+	React.useEffect(() => {
 		user?.email &&
 			cartItems.length !== 0 &&
 			payload &&
