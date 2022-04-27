@@ -38,6 +38,7 @@ const CheckoutForm = ({ total, itemCount }) => {
 		let value = e.target.value
 		if (
 			e.target.value.toLowerCase() === 'united states of america' ||
+			e.target.value.toLowerCase() === 'united states' ||
 			e.target.value.toLowerCase() === 'america'
 		) {
 			value = 'usa'
