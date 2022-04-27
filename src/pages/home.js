@@ -191,7 +191,7 @@ const Home = function () {
 							</div>
 						</div>
 					</div>
-					<div className="md:mt-[-230px] mt-[-200px] md:p-10 w-full pb-1">
+					<div className="md:mt-[-230px] mt-[-200px] mb-[50px] md:p-10 w-full pb-1">
 						{singleProduct.length !== 0 && (
 							<div>
 								<ProductDetails
