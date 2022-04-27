@@ -1,6 +1,9 @@
 require('dotenv').config()
 
-const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+// const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+const stripe = require('stripe')(
+	'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'
+)
 
 // domain/.netlify/functions/create-payment-intent
 exports.handler = async function (event, context) {
