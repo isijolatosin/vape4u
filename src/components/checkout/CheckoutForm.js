@@ -61,8 +61,8 @@ const CheckoutForm = ({ total, itemCount }) => {
 		}
 		if (
 			(user &&
-				address?.street &&
 				address?.city &&
+				address?.street &&
 				address?.province &&
 				address?.postalcode &&
 				address?.country) ||
