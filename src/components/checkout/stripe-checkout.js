@@ -5,8 +5,11 @@ import { loadStripe } from '@stripe/stripe-js'
 import CheckoutForm from './CheckoutForm'
 
 const promise = loadStripe(
-	'pk_test_51KZS6rHNlaA34TujHM8B3Foxz9KiMBFKgHWhj8RYrJg2CvBungKDdLMgw93uhi9OsAHaskXPgTVfYSamHXrrR2sY00P3Zvqja8'
+	'pk_live_51KZS6rHNlaA34Tujp1oxavS88OLsq6pxNoxS3Qe3F0Px24cfWVTNdnahloWTdYebloySBN4eVrhWtp2oCRTClmV200N9cO4I5R'
 )
+// const promise = loadStripe(
+// 	'pk_test_51KZS6rHNlaA34TujHM8B3Foxz9KiMBFKgHWhj8RYrJg2CvBungKDdLMgw93uhi9OsAHaskXPgTVfYSamHXrrR2sY00P3Zvqja8'
+// )
 
 const StripeCheckout = ({ total, itemCount }) => {
 	return (
