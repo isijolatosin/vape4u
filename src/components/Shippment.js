@@ -4,6 +4,7 @@ import { UserContext } from '../context/user-context'
 import Heading from './Heading'
 import { db } from '../firebase'
 import { MdOutlineKeyboardArrowUp } from 'react-icons/md'
+import { GrDeliver } from 'react-icons/gr'
 import { GiCheckMark } from 'react-icons/gi'
 import { MdClose } from 'react-icons/md'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
@@ -80,7 +81,6 @@ function Shippment() {
 						for (const result of results) {
 							data.push({
 								address: result?.data.address,
-								color: result?.data.color,
 								customer: result?.data.customer,
 								description: result?.data.description,
 								email: result?.data.email,
@@ -185,7 +185,7 @@ function Shippment() {
 							className={
 								trackingNum.number === '' || trackingNum.courier === ''
 									? 'flex flex-col justify-center text-sm text-gray-200'
-									: 'flex flex-col justify-center text-sm text-green-700 hover:text-gray-400'
+									: 'flex flex-col justify-center text-sm text-green-700 hover:text-gray-400 mb-10'
 							}>
 							<button
 								disabled={
@@ -223,11 +223,11 @@ function Shippment() {
 									</thead>
 									<tbody>
 										{shippingInfo?.shippingData?.map((item, idx) => (
-											<tr className="table-item-row" key={idx}>
+											<tr className="relative table-item-row" key={idx}>
 												{Object?.values(item)?.map((itm, index) => (
 													<td
 														className={
-															itm?.length >= 200
+															itm?.length >= 100
 																? 'table-items align-left'
 																: 'table-items'
 														}
@@ -236,13 +236,13 @@ function Shippment() {
 															toggleModal(item?.id, item?.customer)
 														}>
 														{typeof itm === 'string'
-															? itm?.length >= 200
+															? itm?.length >= 100
 																? readMore && matchIdx === item?.id
 																	? itm
-																	: `${itm.substring(0, 70)}...`
+																	: `${itm.substring(0, 50)}...`
 																: itm
 															: itm}
-														{itm?.length >= 200 && (
+														{itm?.length >= 100 && (
 															<>
 																<span onClick={() => toggleRead(item?.id)}>
 																	{readMore && matchIdx === item?.id ? (
@@ -303,14 +303,6 @@ function Shippment() {
 					)}
 				</main>
 			</div>
-			{/* ) : (
-				<div className="history-page">
-					<p className="danger">UNAUTHORIZED PATH!</p>
-					<Button to="/" className="btn block total_btn">
-						Back to Home
-					</Button>
-				</div>
-			)} */}
 		</div>
 	)
 }

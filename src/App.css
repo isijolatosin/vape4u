@@ -161,6 +161,86 @@ html {
 	color: black;
 	animation: load 4s ease infinite;
 }
+
+/* Shipment */
+.top {
+	max-width: 100%;
+	margin: 0 auto;
+}
+.top > table {
+	background-color: white;
+}
+.table-head-row {
+	background-color: var(--grey-300);
+	width: 100vw;
+	margin: 0 auto;
+}
+.table-head-item {
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border-right: 1px solid var(--grey-600);
+	border-left: 1px solid var(--grey-600);
+	text-transform: capitalize;
+}
+.table-item-row {
+	position: relative;
+	background-color: whitesmoke;
+}
+.table-items {
+	border: 1px solid var(--grey-200);
+	padding: 15px;
+	width: 100vw;
+	text-align: center;
+	color: var(--grey-800);
+	cursor: pointer;
+}
+.align-left {
+	text-align: left;
+}
+.table-items span {
+	display: flex;
+	justify-content: flex-end;
+	color: var(--grey-1100);
+	font-weight: 500;
+	font-size: 12px;
+	cursor: pointer;
+	text-transform: uppercase;
+}
+.table-items span:hover {
+	color: var(--primary-600);
+}
+.table-items svg {
+	display: inline;
+	font-size: 24px;
+}
+.been-shipped {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	background-color: rgba(169, 169, 169, 0.95);
+}
+.been-shipped-textsm {
+	font-size: 16px;
+	text-transform: capitalize !important;
+	font-weight: 400 !important;
+}
+.been-shipped button {
+	color: var(--grey-700);
+	text-transform: uppercase;
+	cursor: not-allowed;
+}
+.been-shipped span {
+	color: var(--black);
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.been-shipped button:hover {
+	color: var(--black);
+}
 @keyframes load {
 	0%,
 	10%,
