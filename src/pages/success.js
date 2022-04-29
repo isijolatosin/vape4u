@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Helmet } from 'react-helmet'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { GoAlert } from 'react-icons/go'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearCartItem, selectCartItems } from '../slices/appSlices'
@@ -12,18 +12,13 @@ import { AUTHORIZED_ID } from '../constant'
 
 const Success = () => {
 	const { user } = useContext(UserContext)
+	const navigate = useNavigate()
 
 	const { displayName } = user
 	const dispatch = useDispatch()
 	const cartItems = useSelector(selectCartItems)
 	const userAddress = localStorage.getItem('address')
 	const payload = localStorage.getItem('payload')
-
-	React.useEffect(() => {
-		setTimeout(() => {
-			localStorage.setItem('payload', '')
-		}, 3000)
-	}, [])
 
 	React.useEffect(() => {
 		user?.email &&
@@ -75,6 +70,11 @@ const Success = () => {
 		}, 500)
 	})
 
+	const handleBackToShopping = () => {
+		localStorage.setItem('payload', '')
+		navigate('/')
+	}
+
 	return (
 		<>
 			<Helmet>
@@ -91,9 +91,11 @@ const Success = () => {
 								confirmation email shortly
 							</span>
 						</div>
-						<Link className="my-10 " to="/">
-							<Button>Continue Shopping</Button>
-						</Link>
+						<div className="my-10">
+							<Button handleFunc={handleBackToShopping}>
+								Continue Shopping
+							</Button>
+						</div>
 					</div>
 				) : (
 					<div className="text-red-700 flex flex-col items-center justify-center my-10 uppercase font-bold">
