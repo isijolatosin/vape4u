@@ -58,7 +58,7 @@ function InventoryCard({ product, fetchProducts, setSingleProduct }) {
 					<span className="w-[100%]">{`Price: $${product.price}`}</span>
 					<span className="w-[100%]">{`Length: ${product.length}"`}</span>
 					<span className="w-[100%]">{`Description: ${product.description}`}</span>
-					<span className="text-red-800">{product.instock && 'In stock'}</span>
+					<span className="text-red-800">{product.instock && 'Sold Out'}</span>
 					<span className="text-red-800">{product.sales && 'onsale'}</span>
 				</div>
 				<div className="flex flex-col justify-between w-[15%] border-l border-neutral-300 pl-[10px] lg:pl-2 xl:pl-[2px]">

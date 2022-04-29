@@ -40,7 +40,7 @@ function Card({ product, setSingleproduct, scrollToTop }) {
 			)}
 			<div
 				className={`absolute m-3 top-0 ${
-					product.instock ? 'left-14' : 'left-0'
+					product.instock ? 'md:left-[85px] left-[65px]' : 'left-0'
 				} rounded-full p-1 text-neutral-600 shadow-md hover:cursor-pointer`}>
 				<GiExpand onClick={handlePick} size={16} />
 			</div>
