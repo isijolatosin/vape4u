@@ -80,7 +80,7 @@ function Card({ product, setSingleproduct, scrollToTop, setIndex }) {
 				className="w-[100%] max-h-[80%] md:max-w-[100%] md:max-h-[200px] mt-10 mx-auto object-contain  border-t-[1px] border-gray-100"
 			/>
 			<div className="bg-blur absolute bottom-0 w-full h-[80px] rounded-b-[20px] pt-2 uppercase text-center text-[11px] text-cyan-900 font-light flex flex-col leading-2 px-2">
-				<span className="text-[10px]">{product.name.substring(0, 30)}...</span>
+				<span className="text-[10px]">{product.name.substring(0, 27)}...</span>
 				<div className="flex flex-row justify-between items-center w-[100%] mx-auto">
 					<span className="lowercase font-bold">Color: {product.color}</span>
 					<span className="font-bold">
@@ -98,7 +98,7 @@ function Card({ product, setSingleproduct, scrollToTop, setIndex }) {
 					)}
 					{!isInCart(singleProduct, cartItems) && (
 						<div className="relative mt-2">
-							<label className="absolute -top-2 left-[38%] bg-yellow-100 px-2 rounded-[2px] text-blue-800 font-semibold text-[9px]">
+							<label className="absolute capitalize -top-2 right-2 bg-yellow-100 border border-yellow-300 px-2 rounded-[2px] text-yellow-500 font-light pt-[2px] text-[9px]">
 								Quantity
 							</label>
 							<input
@@ -108,7 +108,7 @@ function Card({ product, setSingleproduct, scrollToTop, setIndex }) {
 								value={qnty}
 								onChange={handleQuantity}
 								placeholder="Quantity"
-								className="block w-full px-3 py-[1px] bg-yellow-500 text-gray-500 rounded-[7px] border border-neutral-100 text-[12px]  placeholder-gray-400 focus:outline-none focus:border-gray-200 focus:ring-1 focus:ring-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
+								className="block w-full px-3 py-[1px] bg-yellow-100 text-gray-400 rounded-[7px] border border-yellow-300 text-[12px]  placeholder-gray-400 focus:outline-none focus:border-gray-200 focus:ring-1 focus:ring-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
 							/>
 						</div>
 					)}
