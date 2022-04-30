@@ -25,7 +25,7 @@ const Total = ({ itemCount, total }) => {
 					</li>
 					<li className="flex flex-row items-center text-xs font-medium mr-5">
 						<img className="h-[8px] mr-2" src={lonImage} alt="london-flag" />
-						UK - ${SHIPPING_COST.london}:00
+						UK - ${SHIPPING_COST.uk}:00
 					</li>
 				</ul>
 			</div>
