@@ -10,16 +10,23 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { isInCart } from '../utils/helpers'
 
-function Card({ product, setSingleproduct, scrollToTop, setIndex }) {
+function Card({
+	product,
+	setSingleproduct,
+	scrollToTop,
+	setIndex,
+	setShowCaution,
+	showCaution,
+}) {
 	const cartItems = useSelector(selectCartItems)
 	const dispatch = useDispatch()
-	const [qnty, setQnty] = React.useState(0)
-	const [showCaution, setShowCaution] = React.useState(false)
+	const [qnty, setQnty] = React.useState()
 
 	const handlePick = function () {
 		setSingleproduct(product)
 		scrollToTop()
 		setIndex(0)
+		setShowCaution(false)
 	}
 
 	// adding to cart
@@ -98,7 +105,7 @@ function Card({ product, setSingleproduct, scrollToTop, setIndex }) {
 					)}
 					{!isInCart(singleProduct, cartItems) && (
 						<div className="relative mt-2">
-							<label className="absolute capitalize -top-2 right-2 bg-yellow-100 border border-yellow-300 px-2 rounded-[2px] text-yellow-600 font-light pt-[2px] text-[9px]">
+							<label className="absolute capitalize -top-2 right-8 bg-yellow-100 border border-yellow-300 px-2 rounded-[2px] text-yellow-600 font-light pt-[2px] text-[9px]">
 								Quantity
 							</label>
 							<input

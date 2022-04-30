@@ -18,6 +18,8 @@ const ProductDetails = function ({
 	setSingleProduct,
 	index,
 	setIndex,
+	showCaution,
+	setShowCaution,
 }) {
 	const images = []
 	if (singleProduct?.image) {
@@ -64,8 +66,7 @@ const ProductDetails = function ({
 		Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1) + MIN_RATING)
 	)
 	const deci = Number(Math.random().toFixed(1))
-	const [qnty, setQnty] = React.useState(0)
-	const [showCaution, setShowCaution] = React.useState(false)
+	const [qnty, setQnty] = React.useState('')
 
 	const handleQuantity = (e) => {
 		setShowCaution(false)
@@ -165,7 +166,7 @@ const ProductDetails = function ({
 								value={qnty}
 								onChange={handleQuantity}
 								placeholder="Quantity"
-								className="mt-3 block w-full px-3 pt-2 pb-1 bg-yellow-500 text-white rounded-[3px] border border-neutral-100 text-sm  placeholder-gray-400 focus:outline-none focus:border-gray-200 focus:ring-1 focus:ring-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
+								className="mt-3 block w-full px-3 py-1 bg-yellow-500 text-white rounded-[3px] border border-neutral-100 text-[10px] placeholder-gray-50 focus:outline-none focus:border-gray-200 focus:ring-1 focus:ring-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
 							/>
 						</div>
 					)}

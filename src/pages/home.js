@@ -14,7 +14,7 @@ const Home = function () {
 	const [selectedProduct, setSelectedProduct] = React.useState(
 		'Filter Products by Categories'
 	)
-	// const [lastLength, setLastLength] = React.useState(4)
+	const [showCaution, setShowCaution] = React.useState(false)
 	const filterList = [
 		{ id: '1', name: 'Filter Products by Categories' },
 		{ id: '2', name: 'Handmade Beads' },
@@ -71,6 +71,8 @@ const Home = function () {
 									setSingleproduct={setSingleProduct}
 									scrollToTop={scrollToTop}
 									setIndex={setIndex}
+									setShowCaution={setShowCaution}
+									showCaution={showCaution}
 								/>
 							</div>
 						))}
@@ -93,6 +95,8 @@ const Home = function () {
 									setSingleproduct={setSingleProduct}
 									scrollToTop={scrollToTop}
 									setIndex={setIndex}
+									setShowCaution={setShowCaution}
+									showCaution={showCaution}
 								/>
 							</div>
 						))}
@@ -123,6 +127,8 @@ const Home = function () {
 									setSingleproduct={setSingleProduct}
 									scrollToTop={scrollToTop}
 									setIndex={setIndex}
+									setShowCaution={setShowCaution}
+									showCaution={showCaution}
 								/>
 							</div>
 						))}
@@ -146,6 +152,8 @@ const Home = function () {
 									setSingleproduct={setSingleProduct}
 									scrollToTop={scrollToTop}
 									setIndex={setIndex}
+									setShowCaution={setShowCaution}
+									showCaution={showCaution}
 								/>
 							</div>
 						))}
@@ -204,6 +212,8 @@ const Home = function () {
 									setIndex={setIndex}
 									singleProduct={singleProduct}
 									setSingleProduct={setSingleProduct}
+									showCaution={showCaution}
+									setShowCaution={setShowCaution}
 								/>
 							</div>
 						)}
