@@ -79,7 +79,7 @@ const ProductDetails = function ({
 	const Pen = { description, _id, name, price, image, quantity }
 
 	const addToCart = () => {
-		if (quantity < 1) {
+		if (quantity < 1 || quantity === 0) {
 			setShowCaution(true)
 		}
 		setQnty(0)
@@ -165,19 +165,19 @@ const ProductDetails = function ({
 								id="number"
 								value={qnty}
 								onChange={handleQuantity}
-								placeholder="Quantity"
-								className="mt-3 block w-full px-3 py-1 bg-yellow-500 text-white rounded-[3px] border border-neutral-100 text-[10px] placeholder-gray-50 focus:outline-none focus:border-gray-200 focus:ring-1 focus:ring-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
+								placeholder=""
+								className="mt-3 block w-full px-3 py-1 bg-yellow-100 text-yellow-600 rounded-[3px] border border-yellow-300 text-[10px] placeholder-yellow-600 focus:outline-none focus:border-gray-200 focus:ring-1 focus:ring-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
 							/>
 						</div>
 					)}
-					{showCaution && (
-						<span className="text-red-700 font-light mt-3 mb-[-7px]">
+					{showCaution && !isInCart(singleProduct, cartItems) && (
+						<span className="text-red-700 text-[11px] font-light mt-3 mb-[-7px]">
 							Hey! select your quantity
 						</span>
 					)}
 					<div className="flex flex-row justify-between w-[80%">
 						{isInCart(singleProduct, cartItems) ? (
-							<button handleFunc={IncreaseItem}>Add More (+1)</button>
+							<Button handleFunc={IncreaseItem}>Add More (+1)</Button>
 						) : (
 							<Button handleFunc={addToCart}>Add to cart</Button>
 						)}

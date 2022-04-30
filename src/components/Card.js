@@ -20,7 +20,8 @@ function Card({
 }) {
 	const cartItems = useSelector(selectCartItems)
 	const dispatch = useDispatch()
-	const [qnty, setQnty] = React.useState()
+	const [qnty, setQnty] = React.useState('')
+	const [cardId, setCardId] = React.useState('')
 
 	const handlePick = function () {
 		setSingleproduct(product)
@@ -35,7 +36,8 @@ function Card({
 	const singleProduct = { description, _id, name, price, image, quantity }
 
 	const addToCart = () => {
-		if (quantity < 1) {
+		setCardId(product?._id)
+		if (quantity < 1 || quantity === 0) {
 			setShowCaution(true)
 		}
 		setQnty(0)
@@ -98,14 +100,14 @@ function Card({
 					</span>
 				</div>
 				<div className="mt-2">
-					{showCaution && (
+					{showCaution && cardId === product?._id && (
 						<span className="text-red-700 lowercase font-light">
 							Hey! select your quantity
 						</span>
 					)}
 					{!isInCart(singleProduct, cartItems) && (
 						<div className="relative mt-2">
-							<label className="absolute capitalize -top-2 right-8 bg-yellow-100 border border-yellow-300 px-2 rounded-[2px] text-yellow-600 font-light pt-[2px] text-[9px]">
+							<label className="absolute capitalize -top-2 right-10 bg-yellow-100 border border-yellow-300 px-2 rounded-[2px] text-yellow-600 font-light pt-[2px] text-[9px]">
 								Quantity
 							</label>
 							<input
@@ -114,8 +116,8 @@ function Card({
 								id="number"
 								value={qnty}
 								onChange={handleQuantity}
-								placeholder="Quantity"
-								className="block w-full px-3 py-[1px] bg-yellow-100 text-gray-400 rounded-[7px] border border-yellow-300 text-[12px]  placeholder-gray-400 focus:outline-none focus:border-gray-200 focus:ring-1 focus:ring-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
+								placeholder=""
+								className="block w-full px-3 py-[1px] bg-yellow-100 text-yellow-600 rounded-[7px] border border-yellow-300 text-[10px]  placeholder-yellow-600 focus:outline-none focus:border-gray-200 focus:ring-1 focus:ring-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
 							/>
 						</div>
 					)}

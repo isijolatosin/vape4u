@@ -11,10 +11,10 @@ const Home = function () {
 	const [fetchAllBeads, setFetchAllBeads] = React.useState([])
 	const [fetchAllHair, setFetchAllHair] = React.useState([])
 	const [singleProduct, setSingleProduct] = React.useState([])
+	const [showCaution, setShowCaution] = React.useState(false)
 	const [selectedProduct, setSelectedProduct] = React.useState(
 		'Filter Products by Categories'
 	)
-	const [showCaution, setShowCaution] = React.useState(false)
 	const filterList = [
 		{ id: '1', name: 'Filter Products by Categories' },
 		{ id: '2', name: 'Handmade Beads' },
@@ -212,8 +212,8 @@ const Home = function () {
 									setIndex={setIndex}
 									singleProduct={singleProduct}
 									setSingleProduct={setSingleProduct}
-									showCaution={showCaution}
 									setShowCaution={setShowCaution}
+									showCaution={showCaution}
 								/>
 							</div>
 						)}
