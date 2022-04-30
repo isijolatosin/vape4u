@@ -31,7 +31,7 @@ function Card({
 		setIndex(0)
 		setShowCaution(false)
 
-		navigate(`/product?q=${product?.name}?q=${product?._id}`)
+		navigate(`/product/${product?.name}?q=${product?._id}`)
 	}
 
 	// adding to cart

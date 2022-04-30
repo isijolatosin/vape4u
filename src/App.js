@@ -19,7 +19,7 @@ function App() {
 			<Route exact path="/management" element={<Management />} />
 			<Route exact path="/sign-in" element={<Login />} />
 			<Route exact path="/sign-up" element={<Register />} />
-			<Route exact path="/:productId" element={<Home />} />
+			<Route exact path="/product/:productId" element={<Home />} />
 			<Route exact path="*" element={<NotFound />} />
 			<Route exact path="/" element={<Home />} />
 		</Routes>
