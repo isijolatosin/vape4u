@@ -98,7 +98,7 @@ function Card({ product, setSingleproduct, scrollToTop, setIndex }) {
 					)}
 					{!isInCart(singleProduct, cartItems) && (
 						<div className="relative mt-2">
-							<label className="absolute capitalize -top-2 right-2 bg-yellow-100 border border-yellow-300 px-2 rounded-[2px] text-yellow-500 font-light pt-[2px] text-[9px]">
+							<label className="absolute capitalize -top-2 right-2 bg-yellow-100 border border-yellow-300 px-2 rounded-[2px] text-yellow-600 font-light pt-[2px] text-[9px]">
 								Quantity
 							</label>
 							<input
