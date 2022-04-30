@@ -71,7 +71,7 @@ const Nav = function () {
 							<span className="text-xs font-bold -mr-4">${total}</span>
 						)}
 						<Link
-							to={`/checkout?q=${user?.displayName}`}
+							to={`/checkout/${user?.displayName}`}
 							className="flex items-center justify-between">
 							<div
 								className={
