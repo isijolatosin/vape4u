@@ -1,6 +1,7 @@
 import React from 'react'
 import { AiFillStar } from 'react-icons/ai'
 import { MdOutlineKeyboardArrowLeft } from 'react-icons/md'
+import { AiFillCloseCircle } from 'react-icons/ai'
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
 // import { CgClose } from 'react-icons/cg'
 import { useDispatch, useSelector } from 'react-redux'
@@ -63,16 +64,29 @@ const ProductDetails = function ({
 		Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1) + MIN_RATING)
 	)
 	const deci = Number(Math.random().toFixed(1))
+	const [qnty, setQnty] = React.useState(0)
+	const [showCaution, setShowCaution] = React.useState(false)
+
+	const handleQuantity = (e) => {
+		setShowCaution(false)
+		setQnty(e.target.value)
+	}
 
 	// adding to cart
 	const { description, _id, name, price, image } = singleProduct
-	const Pen = { description, _id, name, price, image }
+	const quantity = Number(qnty)
+	const Pen = { description, _id, name, price, image, quantity }
 
 	const addToCart = () => {
-		dispatch(addToCartItem(Pen))
+		if (quantity < 1) {
+			setShowCaution(true)
+		}
+		setQnty(0)
+		quantity > 0 && dispatch(addToCartItem(Pen))
 	}
 
 	const IncreaseItem = () => {
+		setQnty(0)
 		dispatch(increaseCartItem(Pen))
 	}
 	const increaseIndex = () => {
@@ -139,14 +153,47 @@ const ProductDetails = function ({
 							))}
 						<span>{rating + deci} rating</span>
 					</div>
-					{isInCart(singleProduct, cartItems) ? (
-						<Button handleFunc={IncreaseItem}>Add More</Button>
-					) : (
-						<Button handleFunc={addToCart}>Add to cart</Button>
+					{!isInCart(singleProduct, cartItems) && (
+						<div className="relative mt-2">
+							<label className="absolute top-1 left-3 bg-yellow-100 px-2 rounded-[2px] text-blue-800 font-semibold text-[10px]">
+								Quantity
+							</label>
+							<input
+								type="number"
+								name="number"
+								id="number"
+								value={qnty}
+								onChange={handleQuantity}
+								placeholder="Quantity"
+								className="mt-3 block w-full px-3 pt-2 pb-1 bg-yellow-500 text-white rounded-[3px] border border-neutral-100 text-sm  placeholder-gray-400 focus:outline-none focus:border-gray-200 focus:ring-1 focus:ring-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
+							/>
+						</div>
 					)}
-				</div>
-				<div className="mt-5 text-sm text-gray-400 hover:text-gray-600 hover:cursor-pointer text-center ease-in duration-300">
-					<span onClick={() => setSingleProduct([])}>Close</span>
+					{showCaution && (
+						<span className="text-red-700 font-light mt-3 mb-[-7px]">
+							Hey! select your quantity
+						</span>
+					)}
+					<div className="flex flex-row justify-between w-[80%">
+						{isInCart(singleProduct, cartItems) ? (
+							<Button
+								// isDisabled={quantity === 0 && true}
+								handleFunc={IncreaseItem}>
+								Add More (+1)
+							</Button>
+						) : (
+							<Button
+								// isDisabled={quantity === 0 && true}
+								handleFunc={addToCart}>
+								Add to cart
+							</Button>
+						)}
+						<div className="border-l-2 border-gray-900  pl-5 ml-5 mt-5 text-3xl text-gray-900 hover:text-gray-600 hover:cursor-pointer text-left font-light ease-in duration-300">
+							<span onClick={() => setSingleProduct([])}>
+								<AiFillCloseCircle />
+							</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

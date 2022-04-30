@@ -24,7 +24,7 @@ export const appSlices = createSlice({
 			if (!state.cartItems.find((item) => item._id === action.payload._id)) {
 				state.cartItems.push({
 					...action.payload,
-					quantity: 1,
+					quantity: action.payload.quantity,
 				})
 			}
 

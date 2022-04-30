@@ -1,6 +1,7 @@
 function Button(props) {
 	return (
 		<button
+			disabled={props.isDisabled}
 			onClick={props.handleFunc}
 			type={props.type}
 			className={
