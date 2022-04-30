@@ -12,6 +12,7 @@ import {
 } from '../slices/appSlices'
 import Button from './shared/Button'
 import { isInCart } from '../utils/helpers'
+import { useNavigate } from 'react-router-dom'
 
 const ProductDetails = function ({
 	singleProduct,
@@ -61,6 +62,7 @@ const ProductDetails = function ({
 	const MAX_RATING = 5
 	const MIN_RATING = 1
 	const cartItems = useSelector(selectCartItems)
+	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const [rating] = React.useState(
 		Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1) + MIN_RATING)
@@ -182,7 +184,11 @@ const ProductDetails = function ({
 							<Button handleFunc={addToCart}>Add to cart</Button>
 						)}
 						<div className="border-l-2 border-gray-900  pl-5 ml-5 mt-5 text-3xl text-gray-900 hover:text-gray-600 hover:cursor-pointer text-left font-light ease-in duration-300">
-							<span onClick={() => setSingleProduct([])}>
+							<span
+								onClick={() => {
+									setSingleProduct([])
+									navigate(`/`)
+								}}>
 								<AiFillCloseCircle />
 							</span>
 						</div>

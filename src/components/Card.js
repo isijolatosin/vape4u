@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { GiExpand } from 'react-icons/gi'
 import { BsBag } from 'react-icons/bs'
 import { BsBagPlusFill } from 'react-icons/bs'
@@ -19,6 +20,7 @@ function Card({
 	showCaution,
 }) {
 	const cartItems = useSelector(selectCartItems)
+	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const [qnty, setQnty] = React.useState('')
 	const [cardId, setCardId] = React.useState('')
@@ -28,6 +30,8 @@ function Card({
 		scrollToTop()
 		setIndex(0)
 		setShowCaution(false)
+
+		navigate(`/product?q=${product?._id}`)
 	}
 
 	// adding to cart
