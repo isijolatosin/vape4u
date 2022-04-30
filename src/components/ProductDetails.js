@@ -128,14 +128,14 @@ const ProductDetails = function ({
 					<MdOutlineKeyboardArrowLeft
 						onClick={decreaseIndex}
 						size={25}
-						className="absolute top-[45%] text-gray-400 hover:cursor-pointer left-0"
+						className="absolute bg-yellow-100 top-[45%] text-yellow-600 rounded-r-sm hover:cursor-pointer left-0"
 					/>
 				)}
 				{images?.length > 1 && (
 					<MdOutlineKeyboardArrowRight
 						onClick={increaseIndex}
 						size={25}
-						className="absolute top-[45%] text-gray-400 hover:cursor-pointer right-0"
+						className="absolute bg-yellow-100 top-[45%] text-yellow-600 rounded-l-sm hover:cursor-pointer right-0"
 					/>
 				)}
 				<span className="absolute bottom-8 right-[38.2%] text-xs font-bold text-blue-800 px-2 py-[1px] rounded-md bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500">
