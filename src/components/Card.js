@@ -66,9 +66,9 @@ function Card({ product, setSingleproduct, scrollToTop, setIndex }) {
 				alt={product.name}
 				className="w-[100%] max-h-[80%] md:max-w-[100%] md:max-h-[200px] mt-10 mx-auto object-contain  border-t-[1px] border-gray-100"
 			/>
-			<div className="bg-blur absolute bottom-0 w-full h-[80px] rounded-b-[20px] pt-2 uppercase text-center text-[11px] text-cyan-900 font-light flex flex-col leading-2 px-3">
+			<div className="bg-blur absolute bottom-0 w-full h-[80px] rounded-b-[20px] pt-2 uppercase text-center text-[11px] text-cyan-900 font-light flex flex-col leading-2 px-2">
 				<span className="text-[10px]">{product.name}</span>
-				<div className="flex flex-row justify-between items-center w-[90%] mx-auto">
+				<div className="flex flex-row justify-between items-center w-[100%] mx-auto">
 					<span className="lowercase font-bold">Color: {product.color}</span>
 					<span className="font-bold">
 						$
