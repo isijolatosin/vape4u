@@ -249,6 +249,31 @@ html {
 	max-width: 100vw;
 	overflow-x: scroll;
 }
+.progress {
+	height: 1px;
+	width: 80%;
+	margin: 0 auto;
+	background-color: rgb(255, 255, 255);
+	position: absolute;
+	left: 10%;
+	overflow: hidden;
+}
+.progress .inner {
+	height: 100%;
+	background-color: rgb(255, 157, 0);
+	position: absolute;
+	animation: progress 1s infinite;
+}
+@keyframes progress {
+	from {
+		left: -5%;
+		width: 5%;
+	}
+	to {
+		left: 105%;
+		width: 75%;
+	}
+}
 @media screen and (min-width: 850px) {
 	.top {
 		margin-left: 0px;

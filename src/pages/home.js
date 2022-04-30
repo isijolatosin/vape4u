@@ -55,7 +55,7 @@ const Home = function () {
 		return (
 			<div className="mt-[-40px]">
 				<div className="border-b-[1px] pb-5">
-					{fetchAllHair && (
+					{fetchAllHair.length > 1 && (
 						<div className="text-gray-700 ml-[30px] xl:ml-[100px] mt-10 font-normal">
 							<span>Hair and Extensions</span>
 						</div>
@@ -79,7 +79,7 @@ const Home = function () {
 					</div>
 				</div>
 				<div>
-					{fetchAllBeads && (
+					{fetchAllBeads.length > 1 && (
 						<div className="text-gray-500 ml-[30px] xl:ml-[100px] mt-2 font-normal">
 							<span>Beads and Accessories</span>
 						</div>
@@ -111,7 +111,7 @@ const Home = function () {
 			selectedProduct !== 'Filter Products by Categories' &&
 			(selectedProduct === 'Hair & Extensions' ? (
 				<div className="border-b-[1px] pb-5">
-					{fetchAllHair && (
+					{fetchAllHair.length > 1 && (
 						<div className="text-gray-700 ml-[30px] xl:ml-[100px] mt-10 font-normal">
 							<span>Hair and Extensions</span>
 						</div>
@@ -136,7 +136,7 @@ const Home = function () {
 				</div>
 			) : (
 				<div>
-					{fetchAllBeads && (
+					{fetchAllBeads.length > 1 && (
 						<div className="text-gray-500 ml-[30px] xl:ml-[100px] mt-10 font-normal">
 							<span>Beads and Accessories</span>
 						</div>
@@ -204,7 +204,7 @@ const Home = function () {
 							</div>
 						</div>
 					</div>
-					<div className="md:mt-[-230px] mt-[-200px] mb-[50px] md:p-10 w-full pb-1">
+					<div className=" mt-[-200px] mb-[50px] md:p-10 w-full pb-1">
 						{singleProduct.length !== 0 && (
 							<div>
 								<ProductDetails
@@ -224,8 +224,8 @@ const Home = function () {
 								<Beauties />
 							)
 						) : (
-							<div className="scanner">
-								<h1>Fetching PVG data...</h1>
+							<div className="tw-rounded-full progress">
+								<div className="inner"></div>
 							</div>
 						)}
 					</div>
