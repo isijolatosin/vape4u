@@ -10,13 +10,14 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { isInCart } from '../utils/helpers'
 
-function Card({ product, setSingleproduct, scrollToTop }) {
+function Card({ product, setSingleproduct, scrollToTop, setIndex }) {
 	const cartItems = useSelector(selectCartItems)
 	const dispatch = useDispatch()
 
 	const handlePick = function () {
 		setSingleproduct(product)
 		scrollToTop()
+		setIndex(0)
 	}
 
 	// adding to cart

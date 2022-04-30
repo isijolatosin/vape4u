@@ -34,7 +34,17 @@ const ProductSchema = new mongoose.Schema({
 		required: [true, 'must provide description'],
 		trim: true,
 	},
-	image: {
+	image1: {
+		type: String,
+		// required: [true, 'must provide image url'],
+		// trim: true,
+	},
+	image2: {
+		type: String,
+		// required: [true, 'must provide image url'],
+		// trim: true,
+	},
+	image3: {
 		type: String,
 		// required: [true, 'must provide image url'],
 		// trim: true,

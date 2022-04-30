@@ -1,5 +1,7 @@
 import React from 'react'
 import { AiFillStar } from 'react-icons/ai'
+import { MdOutlineKeyboardArrowLeft } from 'react-icons/md'
+import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
 // import { CgClose } from 'react-icons/cg'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -10,7 +12,49 @@ import {
 import Button from './shared/Button'
 import { isInCart } from '../utils/helpers'
 
-const ProductDetails = function ({ singleProduct, setSingleProduct }) {
+const ProductDetails = function ({
+	singleProduct,
+	setSingleProduct,
+	index,
+	setIndex,
+}) {
+	const images = []
+	if (singleProduct?.image) {
+		images.push(singleProduct?.image)
+	}
+	if (singleProduct?.image2) {
+		images.push(singleProduct?.image2)
+	}
+	if (singleProduct?.image3) {
+		images.push(singleProduct?.image3)
+	}
+	if (singleProduct?.image4) {
+		images.push(singleProduct?.image4)
+	}
+	if (singleProduct?.image5) {
+		images.push(singleProduct?.image5)
+	}
+	if (singleProduct?.image6) {
+		images.push(singleProduct?.image6)
+	}
+	if (singleProduct?.image7) {
+		images.push(singleProduct?.image7)
+	}
+	if (singleProduct?.image8) {
+		images.push(singleProduct?.image8)
+	}
+	if (singleProduct?.image9) {
+		images.push(singleProduct?.image9)
+	}
+	if (singleProduct?.image10) {
+		images.push(singleProduct?.image10)
+	}
+	if (singleProduct?.image11) {
+		images.push(singleProduct?.image11)
+	}
+	if (singleProduct?.image12) {
+		images.push(singleProduct?.image12)
+	}
 	const MAX_RATING = 5
 	const MIN_RATING = 1
 	const cartItems = useSelector(selectCartItems)
@@ -31,9 +75,19 @@ const ProductDetails = function ({ singleProduct, setSingleProduct }) {
 	const IncreaseItem = () => {
 		dispatch(increaseCartItem(Pen))
 	}
+	const increaseIndex = () => {
+		if (index >= 0 && index !== images?.length - 1) {
+			setIndex(index + 1)
+		}
+	}
+	const decreaseIndex = () => {
+		if (index !== 0) {
+			setIndex(index - 1)
+		}
+	}
 
 	return (
-		<div className="relative flex flex-col w-[100%] mx-auto md:w-full p-1 py-10 md:py-0 md:flex-row items-center justify-center bg-gradient-to-r from-yellow-100 via-yellow-50 to-yellow-100 rounded-[30px] ">
+		<div className="relative flex flex-col w-[100%] mx-auto md:w-full p-2 py-10 mt-5 md:mt-0 md:py-0 md:flex-row items-center justify-center bg-gradient-to-r from-yellow-100 via-yellow-50 to-yellow-100 rounded-[30px] ">
 			<div className="flex-[0.4] border-b-[1px] pb-5">
 				<p className="text-xl font-bold text-blue-800 leading-6 mb-2">
 					{singleProduct.name}
@@ -46,13 +100,27 @@ const ProductDetails = function ({ singleProduct, setSingleProduct }) {
 					<span>Color: {singleProduct.color}</span>
 				</div>
 			</div>
-			<div className="flex-[0.4] relative m-10 w-[100%] md:max-w-[230px] bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500 object-cover rounded-lg">
+			<div className="relative flex-[0.4] m-10 w-[100%] md:max-w-[230px] bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500 object-cover rounded-lg">
 				<img
 					id={singleProduct.id}
-					src={singleProduct.image}
+					src={images[index]}
 					alt={singleProduct.id}
-					className="object-contain h-[380px] w-[100%] rounded-lg object-bottom shadow-2xl"
+					className="object-contain h-[100%] w-[100%] rounded-lg object-bottom shadow-2xl"
 				/>
+				{images?.length > 1 && (
+					<MdOutlineKeyboardArrowLeft
+						onClick={decreaseIndex}
+						size={25}
+						className="absolute top-[45%] text-gray-400 hover:cursor-pointer left-0"
+					/>
+				)}
+				{images?.length > 1 && (
+					<MdOutlineKeyboardArrowRight
+						onClick={increaseIndex}
+						size={25}
+						className="absolute top-[45%] text-gray-400 hover:cursor-pointer right-0"
+					/>
+				)}
 				<span className="absolute bottom-8 right-[38.2%] text-xs font-bold text-blue-800 px-2 py-[1px] rounded-md bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500">
 					$
 					{!Number.isInteger(singleProduct.price)

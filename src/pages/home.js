@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet'
 
 const Home = function () {
 	const [prod, setShowProduct] = React.useState(false)
+	const [index, setIndex] = React.useState(0)
 	const [fetchAllBeads, setFetchAllBeads] = React.useState([])
 	const [fetchAllHair, setFetchAllHair] = React.useState([])
 	const [singleProduct, setSingleProduct] = React.useState([])
@@ -16,8 +17,8 @@ const Home = function () {
 	// const [lastLength, setLastLength] = React.useState(4)
 	const filterList = [
 		{ id: '1', name: 'Filter Products by Categories' },
-		{ id: '2', name: 'Hair & Extensions' },
-		{ id: '3', name: 'Handmade Beads' },
+		{ id: '2', name: 'Handmade Beads' },
+		{ id: '3', name: 'Hair & Extensions' },
 	]
 
 	async function fetchProducts() {
@@ -69,6 +70,7 @@ const Home = function () {
 									product={product}
 									setSingleproduct={setSingleProduct}
 									scrollToTop={scrollToTop}
+									setIndex={setIndex}
 								/>
 							</div>
 						))}
@@ -90,6 +92,7 @@ const Home = function () {
 									product={product}
 									setSingleproduct={setSingleProduct}
 									scrollToTop={scrollToTop}
+									setIndex={setIndex}
 								/>
 							</div>
 						))}
@@ -119,6 +122,7 @@ const Home = function () {
 									product={product}
 									setSingleproduct={setSingleProduct}
 									scrollToTop={scrollToTop}
+									setIndex={setIndex}
 								/>
 							</div>
 						))}
@@ -141,6 +145,7 @@ const Home = function () {
 									product={product}
 									setSingleproduct={setSingleProduct}
 									scrollToTop={scrollToTop}
+									setIndex={setIndex}
 								/>
 							</div>
 						))}
@@ -195,6 +200,8 @@ const Home = function () {
 						{singleProduct.length !== 0 && (
 							<div>
 								<ProductDetails
+									index={index}
+									setIndex={setIndex}
 									singleProduct={singleProduct}
 									setSingleProduct={setSingleProduct}
 								/>

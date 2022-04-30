@@ -74,7 +74,7 @@ function InventoryForm({
 									? 'ml-2 rounded-full bg-cyan-400'
 									: 'ml-2 rounded-full bg-none border-cyan-200'
 							}
-							onChange={toggleSales}
+							onChange={toggleInstock}
 						/>
 					</div>
 				</div>
