@@ -1,6 +1,5 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { GiExpand } from 'react-icons/gi'
 import { HiOutlineShoppingBag } from 'react-icons/hi'
 import { HiShoppingBag } from 'react-icons/hi'
 import {
