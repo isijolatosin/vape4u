@@ -26,7 +26,7 @@ function Footer() {
 			</div>
 			<div className="flex justify-evenly items-center w-[80%] md:w-[40%] mt-3">
 				<a
-					href="https://www.instagram.com/mamaselense/"
+					href="https://www.instagram.com/pvginternationalsbeauty/"
 					target="_blank"
 					rel="noopener noreferrer">
 					<FiInstagram

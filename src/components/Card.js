@@ -1,8 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { GiExpand } from 'react-icons/gi'
-import { BsBag } from 'react-icons/bs'
-import { BsBagPlusFill } from 'react-icons/bs'
+import { HiOutlineShoppingBag } from 'react-icons/hi'
+import { HiShoppingBag } from 'react-icons/hi'
 import {
 	addToCartItem,
 	increaseCartItem,
@@ -61,27 +61,34 @@ function Card({
 	return (
 		<div className="bg-neutral-50 w-full h-[300px] md:w-[230px] md:h-[270px] relative rounded-[7px] mt-5 shadow-2xl">
 			{product.instock && (
-				<div className="text-white font-light text-sm bg-yellow-500 absolute w-[38%] text-center top-[18px]">
+				<div className="text-white font-light text-sm bg-yellow-500 absolute w-[33%] text-center top-[18px]">
 					sold out
 				</div>
 			)}
-			<div
+			{/* <div
 				className={`absolute m-3 top-0 ${
-					product.instock ? 'md:left-[85px] left-[65px]' : 'left-0'
+					product.instock ? 'md:left-[65px] left-[47px]' : 'left-0'
 				} rounded-full p-1 text-neutral-600 shadow-md hover:cursor-pointer`}>
 				<GiExpand onClick={handlePick} size={16} />
-			</div>
+			</div> */}
 			<div className="absolute m-3 top-0 right-0 text-neutral-900 hover:cursor-pointer">
 				{isInCart(singleProduct, cartItems) ? (
-					<div className="shadow-md border-[1px] border-yellow-400 text-yellow-500 rounded-full p-1">
-						<BsBagPlusFill
+					<div className="flex flex-row items-center">
+						<span className="text-[10px] mr-1 text-yellow-600">Add More</span>
+						<HiShoppingBag
+							className="shadow-md border-[1px] border-yellow-400 text-yellow-500 rounded-full p-1"
 							onClick={cartItems.length !== 0 ? IncreaseItem : null}
-							size={16}
+							size={23}
 						/>
 					</div>
 				) : (
-					<div className="shadow-md p-1 rounded-full">
-						<BsBag onClick={addToCart} size={16} />
+					<div className="flex flex-row items-center">
+						<span className="text-[10px] mr-1 text-gray-500">Add to cart</span>
+						<HiOutlineShoppingBag
+							className="shadow-md p-1 text-gray-500 rounded-full"
+							onClick={addToCart}
+							size={23}
+						/>
 					</div>
 				)}
 			</div>
@@ -94,7 +101,7 @@ function Card({
 				className="w-[100%] max-h-[80%] md:max-w-[100%] md:max-h-[200px] mt-10 mx-auto object-contain  border-t-[1px] border-gray-100"
 			/>
 			<div className="bg-blur absolute bottom-0 w-full h-[80px] rounded-b-[20px] pt-2 uppercase text-center text-[11px] text-cyan-900 font-light flex flex-col leading-2 px-2">
-				<span className="text-[10px]">{product.name.substring(0, 27)}...</span>
+				<span className="text-[10px]">{product.name.substring(0, 20)}...</span>
 				<div className="flex flex-row justify-between items-center w-[100%] mx-auto">
 					<span className="lowercase font-bold">Color: {product.color}</span>
 					<span className="font-bold">
