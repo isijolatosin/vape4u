@@ -60,10 +60,11 @@ function Card({
 	return (
 		<div className="bg-neutral-50 w-full h-[300px] md:w-[230px] md:h-[270px] relative rounded-[7px] mt-5 shadow-2xl">
 			{product.instock && (
-				<div className="text-white font-light text-sm bg-yellow-500 absolute w-[33%] text-center top-[18px]">
+				<div className="text-white font-light text-[11px] bg-yellow-500 absolute w-[33%] text-center top-[23px]">
 					sold out
 				</div>
 			)}
+
 			{/* <div
 				className={`absolute m-3 top-0 ${
 					product.instock ? 'md:left-[65px] left-[47px]' : 'left-0'
@@ -92,13 +93,17 @@ function Card({
 				)}
 			</div>
 
-			<img
-				onClick={handlePick}
-				id={product._id}
-				src={product?.image}
-				alt={product.name}
-				className="w-[100%] max-h-[80%] md:max-w-[100%] md:max-h-[200px] mt-10 mx-auto object-contain  border-t-[1px] border-gray-100"
-			/>
+			<div onClick={handlePick} className="relative hover:cursor-pointer">
+				<img
+					id={product._id}
+					src={product?.image}
+					alt={product.name}
+					className="w-[100%] max-h-[80%] md:max-w-[100%] md:max-h-[200px] mt-10 mx-auto object-contain  border-t-[1px] border-gray-100"
+				/>
+				<div className="bg-yellow-100 text-[10px] text-gray-500 absolute top-[17px] left-0 py-1 px-2">
+					<span>Product Details</span>
+				</div>
+			</div>
 			<div className="bg-blur absolute bottom-0 w-full h-[80px] rounded-b-[20px] pt-2 uppercase text-center text-[11px] text-cyan-900 font-light flex flex-col leading-2 px-2">
 				<span className="text-[10px]">{product.name.substring(0, 20)}...</span>
 				<div className="flex flex-row justify-between items-center w-[100%] mx-auto">
@@ -135,7 +140,7 @@ function Card({
 				</div>
 			</div>
 			{product.sales && (
-				<div className="text-white font-light text-sm bg-black absolute w-[30%] text-center top-[40px]">
+				<div className="text-white font-light text-[11px] bg-black absolute w-[30%] text-center top-[40px]">
 					sales
 				</div>
 			)}
