@@ -87,6 +87,7 @@ function Card({
 			</div>
 
 			<img
+				onClick={handlePick}
 				id={product._id}
 				src={product?.image}
 				alt={product.name}
