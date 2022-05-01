@@ -54,7 +54,7 @@ const Home = function () {
 	const Beauties = () => {
 		return (
 			<div className="mt-[-40px]">
-				<div className="border-b-[1px] pb-5">
+				<div className=" pb-5">
 					{fetchAllHair.length > 1 && (
 						<div className="text-gray-700 ml-[30px] xl:ml-[100px] mt-10 font-normal">
 							<span>Hair and Extensions</span>
@@ -80,8 +80,10 @@ const Home = function () {
 				</div>
 				<div>
 					{fetchAllBeads.length > 1 && (
-						<div className="text-gray-500 ml-[30px] xl:ml-[100px] mt-2 font-normal">
-							<span>Beads and Accessories</span>
+						<div className="border-t-[1px] pt-5 mt-5">
+							<span className="text-gray-500 ml-[30px] xl:ml-[100px] mt-2 font-normal">
+								Beads and Accessories
+							</span>
 						</div>
 					)}
 					<div className="w-full justify-center grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">

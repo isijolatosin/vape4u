@@ -117,13 +117,19 @@ const ProductDetails = function ({
 					<span>Color: {singleProduct.color}</span>
 				</div>
 			</div>
-			<div className="relative flex-[0.4] m-10 w-[100%] md:max-w-[230px] bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500 object-cover rounded-lg">
-				<img
-					id={singleProduct.id}
-					src={images[index]}
-					alt={singleProduct.id}
-					className="object-contain h-[100%] w-[100%] rounded-lg object-bottom shadow-2xl"
-				/>
+			<div className="relative flex-[0.4] m-10 w-[100%] h-[480px] md:max-w-[300px] bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500 object-cover rounded-lg">
+				<div className="max-h-[50%]">
+					<img
+						id={singleProduct.id}
+						src={images[index]}
+						alt={singleProduct.id}
+						className="object-contain h-[480px] w-[100%] rounded-lg object-bottom shadow-2xl"
+					/>
+				</div>
+				<div className="text-[10px] text-blue-900 font-semibold absolute top-0 rounded-t-lg py-2 text-center bg-blur px-3 w-full">
+					{index + 1} of {images.length} photos of{' '}
+					{singleProduct.name.toLowerCase()}
+				</div>
 				{images?.length > 1 && (
 					<MdOutlineKeyboardArrowLeft
 						onClick={decreaseIndex}
