@@ -247,7 +247,7 @@ const Home = function () {
 								<Beauties />
 							)
 						) : (
-							<div className="tw-rounded-full mt-7 progress">
+							<div className="tw-rounded-full mt-10 progress">
 								<div className="inner"></div>
 							</div>
 						)}

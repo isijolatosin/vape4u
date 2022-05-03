@@ -118,15 +118,15 @@ const Nav = function () {
 					</div>
 				</div>
 			</div>
-			<div className="md:hidden w-[60%] mx-auto flex mt-5 justify-between">
+			<div className="md:hidden w-[100%] mx-auto flex mt-5 justify-between">
 				{navLinks.map((nav) => (
 					<Link
 						onClick={() => setActive(nav.navName)}
-						className={
+						className={`mx-3 ${
 							active === nav.navName
-								? 'mx-3 text-yellow-500 font-bold text-xs ease-in duration-300 hover:text-cyan-900'
-								: 'mx-3 text-neutral-800 font-bold text-xs ease-in duration-300 hover:text-cyan-900'
-						}
+								? 'text-yellow-500 font-bold'
+								: 'text-gray-400'
+						} hover:text-gray-400 uppercase ease duration-300 text-[8.8px]`}
 						key={nav.id}
 						to={nav.link}>
 						{nav.navName}
