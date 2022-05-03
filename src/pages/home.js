@@ -12,13 +12,20 @@ const Home = function () {
 	const [fetchAllHair, setFetchAllHair] = React.useState([])
 	const [singleProduct, setSingleProduct] = React.useState([])
 	const [showCaution, setShowCaution] = React.useState(false)
-	const [selectedProduct, setSelectedProduct] = React.useState(
-		'Filter Products by Categories'
-	)
+	const [selectedProduct, setSelectedProduct] = React.useState('')
 	const filterList = [
-		{ id: '1', name: 'Filter Products by Categories' },
-		{ id: '2', name: 'Handmade Beads' },
-		{ id: '3', name: 'Hair & Extensions' },
+		{
+			id: '2',
+			filterName: 'Hair & Extensions',
+			name: 'Hair',
+			src: require('../assets/hair.jpeg'),
+		},
+		{
+			id: '3',
+			filterName: 'Handmade Beads',
+			name: 'Beads',
+			src: require('../assets/bead.jpeg'),
+		},
 	]
 
 	async function fetchProducts() {
@@ -47,8 +54,8 @@ const Home = function () {
 		window.scrollTo(0, 0)
 	}
 
-	const handlePickProduct = (e) => {
-		setSelectedProduct(e.target.value)
+	const handlePickProduct = (val) => {
+		setSelectedProduct(val)
 	}
 
 	const Beauties = () => {
@@ -114,7 +121,7 @@ const Home = function () {
 			(selectedProduct === 'Hair & Extensions' ? (
 				<div className="border-b-[1px] pb-5">
 					{fetchAllHair.length > 1 && (
-						<div className="text-gray-700 ml-[30px] xl:ml-[100px] mt-10 font-normal">
+						<div className="text-gray-700 ml-[30px] xl:ml-[100px] mt-10 md:mt-0 font-normal">
 							<span>Hair and Extensions</span>
 						</div>
 					)}
@@ -139,7 +146,7 @@ const Home = function () {
 			) : (
 				<div>
 					{fetchAllBeads.length > 1 && (
-						<div className="text-gray-500 ml-[30px] xl:ml-[100px] mt-10 font-normal">
+						<div className="text-gray-500 ml-[30px] xl:ml-[100px] mt-10 md:mt-0 font-normal">
 							<span>Beads and Accessories</span>
 						</div>
 					)}
@@ -180,28 +187,42 @@ const Home = function () {
 			<Layout>
 				<div className="w-[100%]">
 					<div className="bg-yellow-500 p-5 rounded-[30px] h-[250px]">
-						<div className="flex flex-row justify-between items-center">
-							<span className="text-xs mt-3 md:mt-0 md:flex-[0.45] text-white mb-5 pl-2 md:mb-0">
+						<div className="flex flex-row justify-between items-center bg-neutral-700 h-[60px] px-2 rounded-lg">
+							<span className="text-xs mt-5 md:mt-0 md:flex-[0.45] text-white mb-5 pl-2 md:mb-0">
 								Home<span className="text-black font-bold"> / Shop</span>
 							</span>
 							<div className="md:flex-[0.55] md:flex md:justify-between">
 								<div className="hidden md:inline">
-									<span className="font-bold mr-28 md:mr-0 text-xl">Shop</span>
+									<span className="font-bold mr-28 text-gray-400 md:mr-0 text-xl">
+										PVG
+										<span className="text-xs font-normal">
+											{' '}
+											International-s
+										</span>
+									</span>
 								</div>
-								<div className="h-[30px] items-center">
-									{/* <span className="text-xs mr-3">
-									Showing 1 - {lastLength} of {fetchAllBeads.length} results
-								</span> */}
-									<select
-										name="selectedProduct"
-										id="selectedProduct"
-										value={selectedProduct}
-										onChange={handlePickProduct}
-										className="bg-yellow-100 text-gray-500 font-light px-2 w-[200px] border border-gray-100 rounded-md text-xs shadow-sm placeholder-gray-200 focus:outline-none focus:border-gray-50 focus:ring-1 focus:ring-gray-50 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0">
-										{filterList.map((options) => (
-											<option key={options.id}>{options.name}</option>
-										))}
-									</select>
+								<div className="flex flex-row items-center justify-between w-[200px] mr-2">
+									<span
+										onClick={() => setSelectedProduct('')}
+										className="text-xs hover:cursor-pointer navStyleChild ease-in duration-300 hover:opacity-[0.5] text-white">
+										Reset Categories
+									</span>
+									{filterList.map((item) => (
+										<div
+											key={item.id}
+											onClick={() => handlePickProduct(item?.filterName)}
+											className="flex justify-center flex-col items-center hover:cursor-pointer ease-in duration-300 navStyleChild">
+											<img
+												id={item.id}
+												src={item?.src}
+												alt={item.id}
+												className="w-[30px] h-[30px] rounded-full"
+											/>
+											<span className="text-[10px] ease-in duration-300 hover:underline text-white">
+												{item.name}
+											</span>
+										</div>
+									))}
 								</div>
 							</div>
 						</div>
@@ -220,7 +241,7 @@ const Home = function () {
 							</div>
 						)}
 						{fetchAllBeads && fetchAllHair && prod ? (
-							selectedProduct !== 'Filter Products by Categories' ? (
+							selectedProduct !== '' ? (
 								<FilteredByProduct />
 							) : (
 								<Beauties />

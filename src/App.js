@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/home'
-import Shop from './pages/shop'
+import About from './pages/about'
+import Contact from './pages/contact'
+import Terms from './pages/terms-and-conditions'
 import NotFound from './pages/error'
 import Checkout from './pages/checkout'
 import Management from './pages/management'
@@ -13,7 +15,9 @@ function App() {
 	return (
 		<Routes>
 			<Route exact path="/checkout/:userId" element={<Checkout />} />
-			<Route exact path="/shop" element={<Shop />} />
+			<Route exact path="/about-us/:pvg" element={<About />} />
+			<Route exact path="/contact-us/:pvg" element={<Contact />} />
+			<Route exact path="/terms-and-conditions/:pvg" element={<Terms />} />
 			<Route exact path="/success" element={<Success />} />
 			<Route exact path="/canceled" element={<Canceled />} />
 			<Route exact path="/management" element={<Management />} />

@@ -10,7 +10,7 @@ import { UserContext } from '../context/user-context'
 
 const Nav = function () {
 	const { user } = useContext(UserContext)
-	const [active, setActive] = React.useState()
+	const [active, setActive] = React.useState('')
 	const itemCount = useSelector(selectItemCount)
 	const total = useSelector(selectTotal)
 	const navigate = useNavigate()
@@ -22,8 +22,18 @@ const Nav = function () {
 		},
 		{
 			id: 2,
-			navName: 'shop',
-			link: '/shop',
+			navName: 'about-us',
+			link: '/about-us/pvg international s',
+		},
+		{
+			id: 3,
+			navName: 'contact-us',
+			link: '/contact-us/pvg international s',
+		},
+		{
+			id: 4,
+			navName: 'terms-and-conditions',
+			link: '/terms-and-conditions/pvg international s',
 		},
 	]
 
@@ -32,14 +42,14 @@ const Nav = function () {
 		// eslint-disable-next-line array-callback-return
 		navLinks.map((itm) => {
 			if (pathArr?.[0] === itm.navName) {
-				setActive(pathArr?.[0])
+				setActive(pathArr?.[0]) || setActive(itm.navName)
 			}
 			if (window.location.pathname === '/') {
 				setActive('home')
 			}
 		})
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
+	}, [active])
 
 	const handleSignOut = () => {
 		auth.signOut()
@@ -50,15 +60,15 @@ const Nav = function () {
 		<div>
 			<div className="flex items-center justify-between">
 				<Logo />
-				<div className="hidden md:inline">
+				<div className="hidden md:inline navStyle">
 					{navLinks.map((nav) => (
 						<Link
 							onClick={() => setActive(nav.navName)}
-							className={
+							className={`mx-3 ${
 								active === nav.navName
-									? 'mx-3 text-yellow-500 font-bold text-xs'
-									: 'mx-3 text-neutral-800 font-bold text-xs'
-							}
+									? 'text-yellow-500 font-bold'
+									: 'text-gray-400'
+							} hover:text-gray-400 uppercase ease duration-300 text-[11px] navStyleChild`}
 							key={nav.id}
 							to={nav.link}>
 							{nav.navName}
@@ -93,12 +103,14 @@ const Nav = function () {
 					<div className="text-xs text-yellow-600 ml-5">
 						{!user ? (
 							<span
-								className="hover:cursor-pointer"
+								className="hover:cursor-pointer navStyleChild"
 								onClick={() => navigate('/sign-in')}>
 								Sign In
 							</span>
 						) : (
-							<span className="hover:cursor-pointer" onClick={handleSignOut}>
+							<span
+								className="hover:cursor-pointer navStyleChild"
+								onClick={handleSignOut}>
 								{' '}
 								Sign Out
 							</span>
