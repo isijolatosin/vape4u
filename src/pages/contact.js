@@ -61,7 +61,7 @@ const Contact = function () {
 								value={contactInput.name}
 								onChange={handleContactInput}
 								placeholder="Full Name"
-								className="w-[100%] mb-5 text-neutral-500 font-light bg-white block px-3 py-2 border-gray-200 rounded-[2px] text-xs border-[1px] placeholder-neutral-300 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
+								className="w-[100%] mb-5 text-neutral-500 font-light bg-white block px-3 py-2 border-gray-200 rounded-[2px] text-xs border-[1px] placeholder-neutral-300 focus:outline-none focus:border-yellow-100 focus:ring-1 focus:ring-yellow-100 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
 							/>
 							<input
 								type="text"
@@ -70,7 +70,7 @@ const Contact = function () {
 								value={contactInput.email}
 								onChange={handleContactInput}
 								placeholder="Email"
-								className="w-[100%] mb-5 text-neutral-500 font-light bg-white block px-3 py-2 border-gray-200 rounded-[2px] text-xs border-[1px] placeholder-neutral-300 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
+								className="w-[100%] mb-5 text-neutral-500 font-light bg-white block px-3 py-2 border-gray-200 rounded-[2px] text-xs border-[1px] placeholder-neutral-300 focus:outline-none focus:border-yellow-100 focus:ring-1 focus:ring-yellow-100 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
 							/>
 							<input
 								type="text"
@@ -79,7 +79,7 @@ const Contact = function () {
 								value={contactInput.subject}
 								onChange={handleContactInput}
 								placeholder="subject"
-								className="w-[100%] mb-5 text-neutral-500 font-light bg-white block px-3 py-2 border-gray-200 rounded-[2px] text-xs border-[1px] placeholder-neutral-300 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
+								className="w-[100%] mb-5 text-neutral-500 font-light bg-white block px-3 py-2 border-gray-200 rounded-[2px] text-xs border-[1px] placeholder-neutral-300 focus:outline-none focus:border-yellow-100 focus:ring-1 focus:ring-yellow-100 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
 							/>
 							<textarea
 								id="message"
@@ -89,7 +89,7 @@ const Contact = function () {
 								value={contactInput.message}
 								onChange={handleContactInput}
 								placeholder="message..."
-								className="w-[100%] mb-5 text-neutral-500 font-light bg-white block px-3 py-2 border-gray-200 rounded-[2px] text-xs border-[1px] placeholder-neutral-300 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
+								className="w-[100%] mb-5 text-neutral-500 font-light bg-white block px-3 py-2 border-gray-200 rounded-[2px] text-xs border-[1px] placeholder-neutral-300 focus:outline-none focus:border-yellow-100 focus:ring-1 focus:ring-yellow-100 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
 							/>
 							<div className="text-center text-xs text-red-800">
 								{contactInput.error ? (
@@ -97,6 +97,12 @@ const Contact = function () {
 								) : null}
 							</div>
 							<button
+								disabled={
+									!contactInput.name ||
+									!contactInput.email ||
+									!contactInput.subject ||
+									!contactInput.message
+								}
 								className="bg-neutral-600 w-[70%] text-white py-2 text-sm font-light tracking-wide"
 								type="submit">
 								submit
