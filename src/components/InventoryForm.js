@@ -58,7 +58,7 @@ function InventoryForm({
 							checked={isTrueSales}
 							className={
 								isTrueSales
-									? 'ml-2 rounded-full bg-cyan-400'
+									? 'ml-2 rounded-full bg-cyan-900'
 									: 'ml-2 rounded-full bg-none border-cyan-200'
 							}
 							onChange={toggleSales}
@@ -71,7 +71,7 @@ function InventoryForm({
 							checked={isTrueInstock}
 							className={
 								isTrueInstock
-									? 'ml-2 rounded-full bg-cyan-400'
+									? 'ml-2 rounded-full bg-cyan-900'
 									: 'ml-2 rounded-full bg-none border-cyan-200'
 							}
 							onChange={toggleInstock}
