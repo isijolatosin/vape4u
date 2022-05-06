@@ -32,7 +32,7 @@ function Management() {
 	return (
 		<>
 			<Helmet>
-				<title>Management Portal</title>
+				<title>PVG: Admin-Portal</title>
 			</Helmet>
 			<Layout>
 				<div className={'pt-5 flex flex-col w-[100%] items-center'}>

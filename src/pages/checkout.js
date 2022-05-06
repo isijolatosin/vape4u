@@ -22,7 +22,7 @@ const Checkout = function () {
 	return (
 		<>
 			<Helmet>
-				<title>Checkout</title>
+				<title>PVG: Checkout-page</title>
 			</Helmet>
 			<div className="flex items-center">
 				<Layout>

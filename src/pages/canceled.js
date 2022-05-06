@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Layout from '../components/shared/Layout'
 import Button from '../components/shared/Button'
 import Heading from '../components/Heading'
+import { Helmet } from 'react-helmet'
 
 const Canceled = () => {
 	const [sales, setSales] = React.useState(false)
@@ -12,6 +13,9 @@ const Canceled = () => {
 	}, [])
 	return (
 		<Layout>
+			<Helmet>
+				<title>PVG: Cancel-page</title>
+			</Helmet>
 			<div
 				className={
 					sales

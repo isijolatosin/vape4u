@@ -30,9 +30,8 @@ function InventoryCard({ product, fetchProducts, setSingleProduct }) {
 				sales: product.sales,
 				type: product.type,
 				color: product.color,
-				availablecolor: product.availablecolor,
 				length: product.length,
-				availablelength: product.availablelength,
+				percent: product.percent,
 			})
 
 			// console.log(product)
@@ -58,8 +57,13 @@ function InventoryCard({ product, fetchProducts, setSingleProduct }) {
 					<span className="w-[100%]">{`Price: $${product.price}`}</span>
 					<span className="w-[100%]">{`Length: ${product.length}"`}</span>
 					<span className="w-[100%]">{`Description: ${product.description}`}</span>
+					{product.percent > 0 && product.sales && (
+						<>
+							<span className="w-[100%]">{`Percent: ${product.percent}%`}</span>
+							<span className="text-red-800">on sales: Yes</span>
+						</>
+					)}
 					<span className="text-red-800">{product.instock && 'Sold Out'}</span>
-					<span className="text-red-800">{product.sales && 'onsale'}</span>
 				</div>
 				<div className="flex flex-col justify-between w-[15%] border-l border-neutral-300 pl-[10px] lg:pl-2 xl:pl-[2px]">
 					<MdDeleteOutline

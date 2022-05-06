@@ -78,7 +78,7 @@ const Success = () => {
 	return (
 		<>
 			<Helmet>
-				<title>Success</title>
+				<title>PVG: Success-page</title>
 			</Helmet>
 			<Layout>
 				{payload ? (

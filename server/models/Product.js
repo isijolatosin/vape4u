@@ -29,22 +29,16 @@ const ProductSchema = new mongoose.Schema({
 		required: [true, 'must provide a price'],
 		trim: true,
 	},
+	percent: {
+		type: Number,
+		default: 0,
+	},
 	description: {
 		type: String,
 		required: [true, 'must provide description'],
 		trim: true,
 	},
-	image1: {
-		type: String,
-		// required: [true, 'must provide image url'],
-		// trim: true,
-	},
-	image2: {
-		type: String,
-		// required: [true, 'must provide image url'],
-		// trim: true,
-	},
-	image3: {
+	image: {
 		type: String,
 		// required: [true, 'must provide image url'],
 		// trim: true,

@@ -6,7 +6,7 @@ const Home = function () {
 	return (
 		<>
 			<Helmet>
-				<title>Home</title>
+				<title>PVG: About-us</title>
 			</Helmet>
 			<Layout>
 				<div className="flex flex-row justify-center items-center">

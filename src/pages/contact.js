@@ -34,7 +34,7 @@ const Contact = function () {
 	return (
 		<>
 			<Helmet>
-				<title>Contact</title>
+				<title>PVG: Contact-us</title>
 			</Helmet>
 			<Layout>
 				<div className="flex flex-row justify-center items-center">

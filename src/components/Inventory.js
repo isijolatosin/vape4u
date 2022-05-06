@@ -12,6 +12,7 @@ function Inventory() {
 		color: '',
 		price: '',
 		length: '',
+		percent: '',
 		description: '',
 	})
 	const [imageFile, setImageFile] = React.useState('')
@@ -37,6 +38,7 @@ function Inventory() {
 				color: formData.color,
 				price: formData.price,
 				length: formData.length,
+				percent: formData.percent,
 				description: formData.description,
 				sales: isTrueSales,
 				instock: isTrueInstock,
@@ -54,6 +56,7 @@ function Inventory() {
 			color: '',
 			price: '',
 			length: '',
+			percent: '',
 			description: '',
 		})
 		setIsTrueSales(false)
@@ -89,11 +92,18 @@ function Inventory() {
 			placeholder: 'Length...',
 		},
 		{
-			id: '7',
+			id: '6',
 			name: 'price',
 			type: 'number',
 			value: formData.price,
 			placeholder: 'Price CA($)...',
+		},
+		{
+			id: '7',
+			name: 'sales-percentage',
+			type: 'number',
+			value: formData.percent,
+			placeholder: 'Sales %...',
 		},
 	]
 

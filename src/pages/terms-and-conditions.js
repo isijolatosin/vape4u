@@ -6,7 +6,7 @@ const Contact = function () {
 	return (
 		<>
 			<Helmet>
-				<title>Contact</title>
+				<title>PVG: Terms-and-conditions</title>
 			</Helmet>
 			<Layout>
 				<div className="flex flex-row justify-center items-center">

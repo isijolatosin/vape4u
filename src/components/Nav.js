@@ -78,7 +78,9 @@ const Nav = function () {
 				<div className="flex items-center">
 					<div className="flex items-center">
 						{total > 0 && (
-							<span className="text-xs font-bold -mr-4">${total}</span>
+							<span className="text-xs font-bold -mr-4">
+								${!Number.isInteger(total) ? total : `${total}.00`}
+							</span>
 						)}
 						<Link
 							to={`/checkout/${user?.displayName}`}

@@ -57,7 +57,7 @@ const Register = () => {
 	return (
 		<div>
 			<Helmet>
-				<title>Sign Up</title>
+				<title>PVG: Sign-Up</title>
 			</Helmet>
 			<Layout>
 				<section className="flex flex-col items-center mt-[150px] lg:mt-[100px]">

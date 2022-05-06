@@ -25,6 +25,11 @@ function Card({
 	const [qnty, setQnty] = React.useState('')
 	const [cardId, setCardId] = React.useState('')
 
+	const salesPrice =
+		Math.round(
+			(product.price - product.price * (product.percent / 100)) * 100
+		) / 100
+
 	const handlePick = function () {
 		setSingleproduct(product)
 		scrollToTop()
@@ -35,8 +40,10 @@ function Card({
 	}
 
 	// adding to cart
-	const { description, _id, name, price, image } = product
+	const { description, _id, name, image } = product
 	const quantity = Number(qnty)
+	const price =
+		product.sales && product.percent > 0 ? salesPrice : product.price
 	const singleProduct = { description, _id, name, price, image, quantity }
 
 	const addToCart = () => {
@@ -98,7 +105,7 @@ function Card({
 				/>
 				<div
 					className={`flex flex-row items-center justify-between w-[55%] bg-yellow-100 text-[10px] text-gray-500 absolute ${
-						product.sales ? 'top-[17px]' : 'top-0'
+						product.sales && product.percent > 0 ? 'top-[17px]' : 'top-0'
 					} left-0 py-1 px-2`}>
 					<span>Product Details</span>
 					<GiExpand />
@@ -108,12 +115,27 @@ function Card({
 				<span className="text-[10px]">{product.name.substring(0, 20)}...</span>
 				<div className="flex flex-row justify-between items-center w-[100%] mx-auto">
 					<span className="lowercase font-bold">Color: {product.color}</span>
-					<span className="font-bold">
-						$
-						{!Number.isInteger(product.price)
-							? product.price
-							: `${product.price}.00`}
-					</span>
+					<div>
+						{product.sales && product.percent && (
+							<span className="font-bold mr-2">
+								$
+								{!Number.isInteger(salesPrice)
+									? salesPrice
+									: `${salesPrice}.00`}
+							</span>
+						)}
+						<span
+							className={`${
+								product.sales && product.percent
+									? 'line-through font-light'
+									: 'font-bold'
+							}`}>
+							$
+							{!Number.isInteger(product.price)
+								? product.price
+								: `${product.price}.00`}
+						</span>
+					</div>
 				</div>
 				<div className="mt-2">
 					{showCaution && cardId === product?._id && (
@@ -139,9 +161,9 @@ function Card({
 					)}
 				</div>
 			</div>
-			{product.sales && (
-				<div className="text-white font-light text-[11px] bg-black absolute w-[30%] text-center top-[40px]">
-					sales
+			{product.sales && product.percent > 0 && (
+				<div className="text-red-500 font-bold text-[12px] bg-black absolute w-[30%] text-center top-[40px]">
+					{product.percent}% off
 				</div>
 			)}
 		</div>

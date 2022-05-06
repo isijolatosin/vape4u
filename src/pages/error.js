@@ -17,7 +17,7 @@ function NotFound() {
 	return (
 		<>
 			<Helmet>
-				<title>Error Page</title>
+				<title>PVG: Error-Page</title>
 			</Helmet>
 			<Layout>
 				<div className="flex flex-col items-center my-[100px] rounded-lg w-[90%] md:w-[60%] xl:w-[40%] p-10 text-center mx-auto shadow-2xl bg-neutral-200">

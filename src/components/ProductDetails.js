@@ -75,9 +75,21 @@ const ProductDetails = function ({
 		setQnty(e.target.value)
 	}
 
+	// Sales logic
+	const salesPrice =
+		Math.round(
+			(singleProduct.price -
+				singleProduct.price * (singleProduct.percent / 100)) *
+				100
+		) / 100
+
 	// adding to cart
-	const { description, _id, name, price, image } = singleProduct
+	const { description, _id, name, image } = singleProduct
 	const quantity = Number(qnty)
+	const price =
+		singleProduct.sales && singleProduct.percent > 0
+			? salesPrice
+			: singleProduct.price
 	const Pen = { description, _id, name, price, image, quantity }
 
 	const addToCart = () => {
@@ -92,6 +104,7 @@ const ProductDetails = function ({
 		setQnty(0)
 		dispatch(increaseCartItem(Pen))
 	}
+	// Image index
 	const increaseIndex = () => {
 		if (index >= 0 && index !== images?.length - 1) {
 			setIndex(index + 1)
@@ -144,9 +157,18 @@ const ProductDetails = function ({
 						className="absolute bg-yellow-100 top-[45%] text-yellow-600 rounded-l-sm hover:cursor-pointer right-0"
 					/>
 				)}
+				{singleProduct.sales && (
+					<span className="text-red-500 bg-black text-[12px] py-1 px-2 absolute bottom-0 right-0 rounded-br-lg">
+						{singleProduct.percent}% off
+					</span>
+				)}
 				<span className="absolute bottom-8 right-[38.2%] text-xs font-bold text-blue-800 px-2 py-[1px] rounded-md bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500">
 					$
-					{!Number.isInteger(singleProduct.price)
+					{singleProduct.sales && singleProduct.percent
+						? !Number.isInteger(salesPrice)
+							? salesPrice
+							: `${salesPrice}.00`
+						: !Number.isInteger(singleProduct.price)
 						? singleProduct.price
 						: `${singleProduct.price}.00`}
 				</span>

@@ -181,7 +181,7 @@ const Home = function () {
 	return (
 		<>
 			<Helmet>
-				<title>Home</title>
+				<title>PVG</title>
 			</Helmet>
 
 			<Layout>

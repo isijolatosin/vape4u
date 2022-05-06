@@ -13,7 +13,9 @@ function AllInventories() {
 	// const [imageFile, setImageFile] = React.useState('')
 
 	const toggleSales = () => {
-		setIsTrueSales(!isTrueSales)
+		if (singleProduct.percent >= 1) {
+			setIsTrueSales(!isTrueSales)
+		}
 	}
 	const toggleInstock = () => {
 		setIsTrueInstock(!isTrueInstock)
@@ -40,10 +42,9 @@ function AllInventories() {
 			name: e.target.value,
 			type: singleProduct.type,
 			color: singleProduct.color,
-			availablecolor: singleProduct.availablecolor,
 			price: Number(singleProduct.price),
 			length: Number(singleProduct.length),
-			availablelength: singleProduct.availablelength,
+			percent: Number(singleProduct.percent),
 			description: singleProduct.description,
 			sales: singleProduct.sales,
 		})
@@ -54,10 +55,9 @@ function AllInventories() {
 			name: singleProduct.name,
 			type: e.target.value,
 			color: singleProduct.color,
-			availablecolor: singleProduct.availablecolor,
 			price: Number(singleProduct.price),
 			length: Number(singleProduct.length),
-			availablelength: singleProduct.availablelength,
+			percent: Number(singleProduct.percent),
 			description: singleProduct.description,
 			sales: singleProduct.sales,
 		})
@@ -68,10 +68,9 @@ function AllInventories() {
 			name: singleProduct.name,
 			type: singleProduct.type,
 			color: e.target.value,
-			availablecolor: singleProduct.availablecolor,
 			price: Number(singleProduct.price),
 			length: Number(singleProduct.length),
-			availablelength: singleProduct.availablelength,
+			percent: Number(singleProduct.percent),
 			description: singleProduct.description,
 			sales: singleProduct.sales,
 		})
@@ -82,10 +81,9 @@ function AllInventories() {
 			name: singleProduct.name,
 			type: singleProduct.type,
 			color: singleProduct.color,
-			availablecolor: singleProduct.availablecolor,
 			price: Number(singleProduct.price),
-			length: e.target.value,
-			availablelength: singleProduct.availablelength,
+			length: Number(e.target.value),
+			percent: Number(singleProduct.percent),
 			description: singleProduct.description,
 			sales: singleProduct.sales,
 		})
@@ -96,10 +94,23 @@ function AllInventories() {
 			name: singleProduct.name,
 			type: singleProduct.type,
 			color: singleProduct.color,
-			availablecolor: singleProduct.availablecolor,
-			price: e.target.value,
+			price: Number(e.target.value),
 			length: Number(singleProduct.length),
-			availablelength: singleProduct.availablelength,
+			percent: Number(singleProduct.percent),
+			description: singleProduct.description,
+			sales: singleProduct.sales,
+		})
+	}
+	const handleInputPercent = (e) => {
+		console.warn(e.target.value)
+		setSingleProduct({
+			id: singleProduct.id,
+			name: singleProduct.name,
+			type: singleProduct.type,
+			color: singleProduct.color,
+			price: Number(singleProduct.price),
+			length: Number(singleProduct.length),
+			percent: Number(e.target.value),
 			description: singleProduct.description,
 			sales: singleProduct.sales,
 		})
@@ -110,12 +121,11 @@ function AllInventories() {
 			name: singleProduct.name,
 			type: singleProduct.type,
 			color: singleProduct.color,
-			availablecolor: singleProduct.availablecolor,
 			price: Number(singleProduct.price),
 			length: Number(singleProduct.length),
-			availablelength: singleProduct.availablelength,
-			sales: singleProduct.sales,
+			percent: Number(singleProduct.percent),
 			description: e.target.value,
+			sales: singleProduct.sales,
 		})
 	}
 
@@ -127,10 +137,9 @@ function AllInventories() {
 				name: singleProduct.name,
 				type: singleProduct.type,
 				color: singleProduct.color,
-				availablecolor: singleProduct.availablecolor,
 				price: singleProduct.price,
 				length: singleProduct.length,
-				availablelength: singleProduct.availablelength,
+				percent: singleProduct.percent,
 				description: singleProduct.description,
 				sales: isTrueSales,
 				instock: isTrueInstock,
@@ -220,28 +229,26 @@ function AllInventories() {
 								placeholder="Price..."
 								className="rounded mt-1 block lg:w-[50%] mx-auto w-[90%] px-3 py-2 border-none text-sm shadow-xl placeholder-gray-400 focus:outline-none focus:border-gray-200 focus:ring-1 focus:ring-gray-200 isabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0 mb-5 placeholder:font-light placeholder:text-xs text-gray-700 font-light"
 							/>
+							<input
+								type="number"
+								name="percent"
+								id="percent"
+								value={singleProduct.percent}
+								onChange={handleInputPercent}
+								placeholder="Sales %..."
+								className="rounded mt-1 block lg:w-[50%] mx-auto w-[90%] px-3 py-2 border-none text-sm shadow-xl placeholder-gray-400 focus:outline-none focus:border-gray-200 focus:ring-1 focus:ring-gray-200 isabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0 mb-5 placeholder:font-light placeholder:text-xs text-gray-700 font-light"
+							/>
 							<textarea
-								value={singleProduct.description}
-								name="description"
-								onChange={handleInputDesc}
 								rows={5}
 								cols={50}
+								type="text"
+								name="description"
+								id="description"
+								value={singleProduct.description}
+								onChange={handleInputDesc}
 								placeholder="Description..."
 								className="rounded mt-1 block lg:w-[50%] mx-auto w-[90%] px-3 py-2 border-none text-sm shadow-xl placeholder-gray-400 focus:outline-none focus:border-gray-200 focus:ring-1 focus:ring-gray-200 isabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0 mb-5 placeholder:font-light placeholder:text-xs text-gray-700 font-light"
 							/>
-							{/* <div className="text-red-800 text-sm mb-2 ">
-								<span>
-									Rename Image and substitute space with a dash ( e.g abc-def )
-								</span>
-							</div> */}
-							{/* <div className="rounded flex flex-row items-center shadow-xl pl-3 pb-1">
-								<label className="mr-3 text-gray-500 text-sm">Image</label>
-								<input
-									onChange={uploadFile}
-									type="file"
-									className="block w-full text-sm text-gray-500 file:mr-4 file:py-1 file:px-4 file:rounded file:border-0 file:text-sm file:bg-gray-200 file:text-violet-700 hover:file:bg-violet-100 ease-in duration-300"
-								/>
-							</div> */}
 							<div className="flex">
 								<div className="rounded flex flex-row items-center mt-5 mr-10 shadow-xl p-2">
 									<label className="mr-3 text-gray-500 text-sm">Sales</label>
