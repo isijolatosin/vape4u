@@ -158,11 +158,15 @@ const ProductDetails = function ({
 					/>
 				)}
 				{singleProduct.sales && (
-					<span className="text-red-500 bg-black text-[12px] py-1 px-2 absolute bottom-0 right-0 rounded-br-lg">
-						{singleProduct.percent}% off
+					<span className="text-white font-light bg-black w-full text-center text-[12px] py-1 px-2 absolute bottom-0 right-0 rounded-b-lg">
+						On sales -{' '}
+						<span className="text-red-500 font-bold text-[15px]">
+							{singleProduct.percent}%
+						</span>{' '}
+						off original price
 					</span>
 				)}
-				<span className="absolute bottom-8 right-[38.2%] text-xs font-bold text-blue-800 px-2 py-[1px] rounded-md bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500">
+				<span className="absolute bottom-9 right-[38.2%] text-xs font-bold text-blue-800 px-2 py-[1px] rounded-md bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500">
 					$
 					{singleProduct.sales && singleProduct.percent
 						? !Number.isInteger(salesPrice)
