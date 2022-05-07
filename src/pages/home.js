@@ -35,7 +35,11 @@ const Home = function () {
 			} = await axios.get('/api/v1/products')
 			setTimeout(() => {
 				setFetchAllBeads(
-					products.filter((b) => b.type.toLowerCase().includes('bead'))
+					products.filter(
+						(b) =>
+							b.type.toLowerCase().includes('bead') ||
+							b.type.toLowerCase().includes('gold plated')
+					)
 				)
 				setFetchAllHair(
 					products.filter((b) => b.type.toLowerCase().includes('braid'))
