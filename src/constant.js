@@ -1,7 +1,7 @@
 export const SUPER_USER1 = 'tisijola7@gmail.com'
 export const SHIPPING_COST = {
 	canada: 20,
-	usa: 9,
+	usa: 7.99,
 	uk: 20,
 }
 export const CANADA = 'canada'
