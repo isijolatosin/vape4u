@@ -2,6 +2,7 @@ import firebase from 'firebase/compat/app'
 import 'firebase/compat/storage'
 import 'firebase/compat/firestore'
 import 'firebase/compat/auth'
+import 'firebase/compat/app-check'
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyDcylJeqwtlMQcGyyYNfP2sjj9wEpjBqII',
@@ -14,6 +15,9 @@ const firebaseConfig = {
 }
 
 !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app()
+
+const appCheck = firebase.appCheck()
+appCheck.activate('AIzaSyDcylJeqwtlMQcGyyYNfP2sjj9wEpjBqII', true)
 
 const db = firebase.firestore()
 const storage = firebase.storage()
