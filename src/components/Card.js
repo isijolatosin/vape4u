@@ -1,7 +1,5 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { HiOutlineShoppingBag } from 'react-icons/hi'
-import { HiShoppingBag } from 'react-icons/hi'
 import { AiOutlineExpand } from 'react-icons/ai'
 import {
 	addToCartItem,
