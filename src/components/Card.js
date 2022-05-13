@@ -124,10 +124,7 @@ function Card({
 						</span>
 					)}
 					{!isInCart(singleProduct, cartItems) && (
-						<div className="relative mt-2">
-							<label className="absolute capitalize -top-2 right-10 bg-yellow-100 border border-yellow-300 px-2 rounded-[2px] text-yellow-600 font-light pt-[2px] text-[9px]">
-								Quantity
-							</label>
+						<div className="relative mt-2 bg-neutral-200 flex flex-row">
 							<input
 								type="number"
 								name="number"
@@ -135,8 +132,11 @@ function Card({
 								value={qnty}
 								onChange={handleQuantity}
 								placeholder=""
-								className="block w-full px-3 py-[1px] bg-yellow-100 text-yellow-600 rounded-[7px] border border-yellow-300 text-[10px]  placeholder-yellow-600 focus:outline-none focus:border-gray-200 focus:ring-1 focus:ring-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
+								className="block w-full pl-3 py-[1px] text-gray-600 rounded-r-[7px] border border-neutral-200 text-[10px]  placeholder-gray-600 focus:outline-none focus:border-gray-200 focus:ring-0 focus:ring-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-0"
 							/>
+							<label className="flex flex-row items-center capitalize px-2 rounded-[2px] text-neutral-500 font-light pt-[2px] text-[9px]">
+								Quantity
+							</label>
 						</div>
 					)}
 				</div>
