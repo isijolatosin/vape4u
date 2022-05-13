@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { HiOutlineShoppingBag } from 'react-icons/hi'
 import { HiShoppingBag } from 'react-icons/hi'
-import { GiExpand } from 'react-icons/gi'
+import { AiOutlineExpand } from 'react-icons/ai'
 import {
 	addToCartItem,
 	increaseCartItem,
@@ -66,33 +66,17 @@ function Card({
 	}
 
 	return (
-		<div className="bg-neutral-50 w-full h-[300px] md:w-[230px] md:h-[270px] relative rounded-[7px] mt-5 shadow-2xl">
+		<div className="bg-neutral-50 w-full h-[300px] md:w-[230px] md:h-[300px] relative rounded-[7px] mt-5 shadow-2xl">
 			{product.instock && (
-				<div className="text-white font-light text-[11px] bg-yellow-500 absolute w-[33%] text-center top-[24px]">
+				<div
+					className={`${
+						product.sales && product.percent > 0
+							? 'top-[17px]'
+							: 'top-[1px] rounded-tl-[7px]'
+					} text-white font-light text-[11px] bg-yellow-500 absolute w-[30%] z-10 text-center`}>
 					sold out
 				</div>
 			)}
-			<div className="absolute m-3 top-0 right-0 text-neutral-900 hover:cursor-pointer">
-				{isInCart(singleProduct, cartItems) ? (
-					<div className="flex flex-row items-center">
-						<span className="text-[10px] mr-1 text-yellow-600">Add More</span>
-						<HiShoppingBag
-							className="shadow-md border-[1px] border-yellow-400 text-yellow-500 rounded-full p-1"
-							onClick={cartItems.length !== 0 ? IncreaseItem : null}
-							size={23}
-						/>
-					</div>
-				) : (
-					<div className="flex flex-row items-center">
-						<span className="text-[10px] mr-1 text-gray-500">Add to cart</span>
-						<HiOutlineShoppingBag
-							className="shadow-md p-1 text-gray-500 rounded-full"
-							onClick={addToCart}
-							size={23}
-						/>
-					</div>
-				)}
-			</div>
 
 			<div
 				onClick={handlePick}
@@ -101,17 +85,13 @@ function Card({
 					id={product._id}
 					src={product?.image}
 					alt={product.name}
-					className="w-[100%] max-h-[80%] md:max-w-[100%] md:max-h-[200px] mt-10 mx-auto object-contain  border-t-[1px] border-gray-100"
+					className="w-[100%] max-h-[80%] md:max-w-[100%] md:max-h-[200px] rounded-[7px] mx-auto object-contain  border-t-[1px] border-gray-100"
 				/>
-				<div
-					className={`flex flex-row items-center justify-between w-[55%] bg-yellow-100 text-[10px] text-gray-500 absolute ${
-						product.sales && product.percent > 0 ? 'top-[17px]' : 'top-0'
-					} left-0 py-1 px-2`}>
-					<span>Product Details</span>
-					<GiExpand />
+				<div className="absolute top-0 right-0 text-[10px] text-gray-500 p-3">
+					<AiOutlineExpand className="text-lg" />
 				</div>
 			</div>
-			<div className="bg-blur absolute bottom-0 w-full h-[80px] rounded-b-[20px] pt-2 uppercase text-center text-[11px] text-cyan-900 font-light flex flex-col leading-2 px-2">
+			<div className="bg-blur absolute bottom-0 w-full rounded-b-[20px] pt-2 uppercase text-center text-[11px] text-cyan-900 font-light flex flex-col leading-2 px-2">
 				<span className="text-[10px]">{product.name.substring(0, 20)}...</span>
 				<div className="flex flex-row justify-between items-center w-[100%] mx-auto">
 					<span className="lowercase font-bold">Color: {product.color}</span>
@@ -160,9 +140,24 @@ function Card({
 						</div>
 					)}
 				</div>
+				<div className=" my-3 text-neutral-900 hover:cursor-pointer">
+					{isInCart(singleProduct, cartItems) ? (
+						<div
+							onClick={cartItems.length !== 0 ? IncreaseItem : null}
+							className="text-yellow-600 text-center bg-neutral-100 py-2 hover:bg-neutral-200 ease duration-300">
+							<span className="text-[10px] mr-1">Add More</span>
+						</div>
+					) : (
+						<div
+							onClick={addToCart}
+							className="py-2 bg-neutral-200 text-center text-gray-500 hover:bg-neutral-300 hover:text-gray-50 ease duration-300">
+							<span className="text-[10px] mr-1">Add to cart</span>
+						</div>
+					)}
+				</div>
 			</div>
 			{product.sales && product.percent > 0 && (
-				<div className="text-red-500 font-bold text-[12px] bg-black absolute w-[30%] text-center top-[40px]">
+				<div className="text-red-500 font-bold text-[12px] bg-black absolute w-[30%] text-center top-[1px] rounded-tl-[7px]">
 					{product.percent}% off
 				</div>
 			)}

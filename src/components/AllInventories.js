@@ -264,7 +264,7 @@ function AllInventories() {
 									/>
 								</div>
 								<div className="rounded flex flex-row items-center mt-5 shadow-xl p-2">
-									<label className="mr-3 text-gray-500 text-sm">In stock</label>
+									<label className="mr-3 text-gray-500 text-sm">Sold out</label>
 									<input
 										type="checkbox"
 										checked={isTrueInstock}
