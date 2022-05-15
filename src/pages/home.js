@@ -14,7 +14,7 @@ const Home = function () {
 	const [singleProduct, setSingleProduct] = React.useState([])
 	const [showCaution, setShowCaution] = React.useState(false)
 	const [selectedProduct, setSelectedProduct] = React.useState('')
-	const [showTopBtn, setShowTopBtn] = React.useState(true)
+	const [showTopBtn, setShowTopBtn] = React.useState(false)
 	const filterList = [
 		{
 			id: '2',
@@ -125,7 +125,7 @@ const Home = function () {
 		return (
 			selectedProduct !== 'Filter Products by Categories' &&
 			(selectedProduct === 'Hair & Extensions' ? (
-				<div className="border-b-[1px] pb-5">
+				<div className="border-b-[1px] pb-5 overflow-y-scroll">
 					{fetchAllHair.length > 1 && (
 						<div className="text-gray-700 ml-[30px] xl:ml-[100px] mt-10 md:mt-0 font-normal">
 							<span>Hair and Extensions</span>
@@ -184,13 +184,14 @@ const Home = function () {
 		}, 2000)
 
 		window.addEventListener('scroll', () => {
-			if (window.scrollY > 400) {
+			if (window.scrollY > 900) {
 				setShowTopBtn(true)
 			} else {
 				setShowTopBtn(false)
 			}
 		})
-	}, [])
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [window.scrollY])
 
 	const goToTop = () => {
 		window.scrollTo({
