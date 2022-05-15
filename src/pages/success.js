@@ -69,10 +69,15 @@ const Success = () => {
 		}, 500)
 	})
 
+	React.useEffect(() => {
+		setTimeout(() => {
+			localStorage.setItem('payload', '')
+			localStorage.setItem('address', '')
+			localStorage.setItem('altEmail', '')
+		}, 5000)
+	}, [])
+
 	const handleBackToShopping = () => {
-		localStorage.setItem('payload', '')
-		localStorage.setItem('address', '')
-		localStorage.setItem('altEmail', '')
 		navigate('/')
 	}
 

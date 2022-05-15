@@ -3,6 +3,9 @@ import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js'
 import { GoAlert } from 'react-icons/go'
 import { clearCartItem, selectCartItems } from '../../slices/appSlices'
 import { useSelector, useDispatch } from 'react-redux'
+import { SiMastercard } from 'react-icons/si'
+import { RiVisaLine } from 'react-icons/ri'
+import { SiAmericanexpress } from 'react-icons/si'
 import { UserContext } from '../../context/user-context'
 import { SHIPPING_COST, TAX_PERCENT } from '../../constant'
 import axios from 'axios'
@@ -313,11 +316,22 @@ const CheckoutForm = ({ total, itemCount }) => {
 			<form
 				className={
 					allowproceed
-						? 'block ease-in duration-300 w-full'
+						? 'block ease-in duration-300 w-full pt-1 mt-2'
 						: 'hidden ease-in duration-300'
 				}
 				id="payment-form"
 				onSubmit={handleSubmit}>
+				<div className="flex max-w-[95%] mb-1 items-center mx-auto justify-end mr-4 md:mr-6 lg:mr-5 xl:mr-6">
+					<SiMastercard size={20} className="text-yellow-500 mr-3" />
+					<RiVisaLine size={30} className="mr-3 text-blue-900" />
+					<div className="relative flex items-center mr-5">
+						<RiVisaLine size={30} className="text-blue-800" />
+						<span className="absolute bottom-[0px] right-[1px] text-[7px] italic">
+							DEBIT
+						</span>
+					</div>
+					<SiAmericanexpress size={20} className="text-blue-600 mt-2" />
+				</div>
 				<CardElement
 					id="card-element"
 					options={cardStyle}
