@@ -7,6 +7,7 @@ import { UserContext } from '../../context/user-context'
 import { SHIPPING_COST, TAX_PERCENT } from '../../constant'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { ValidateEmail } from '../../utils/ValidateEmail'
 
 const CheckoutForm = ({ total, itemCount }) => {
 	const navigate = useNavigate()
@@ -14,8 +15,10 @@ const CheckoutForm = ({ total, itemCount }) => {
 	const elements = useElements()
 	const cartItems = useSelector(selectCartItems)
 	const [email, setEmail] = React.useState('')
+	const [em, setEm] = React.useState('')
 	const [succeeded, setSucceeded] = React.useState(false)
 	const [_error, set_Error] = React.useState(null)
+	const [err, setErr] = React.useState(null)
 	const [processing, setProcessing] = React.useState('')
 	const [disabled, setDisabled] = React.useState(true)
 	const [clientSecret, setClientSecret] = React.useState('')
@@ -67,12 +70,14 @@ const CheckoutForm = ({ total, itemCount }) => {
 				address?.postalcode &&
 				address?.country) ||
 			(email &&
+				ValidateEmail(email) &&
 				address?.street &&
 				address?.city &&
 				address?.province &&
 				address?.postalcode &&
 				address?.country)
 		) {
+			console.log(email)
 			localStorage.setItem('address', shippingAd)
 			setAllowProceed(true)
 			setAddress({
@@ -178,22 +183,45 @@ const CheckoutForm = ({ total, itemCount }) => {
 				}, 5000)
 		}
 	}
+	const submitEmail = (e) => {
+		if (e) {
+			if (ValidateEmail(e)) {
+				setEmail(e)
+				setErr(null)
+			} else {
+				setErr('Invalid Email Address')
+			}
+		}
+	}
 
 	return (
 		<div>
 			<div className="flex flex-col max-w-[100%] md:max-w-[70%] mx-auto mt-5">
 				{!user && (
-					<input
-						type="email"
-						onChange={(e) => setEmail(e.target.value)}
-						placeholder="Email"
-						value={email}
-						className={
-							error && !email
-								? 'user-email-input input-error'
-								: 'user-email-input'
-						}
-					/>
+					<div className="flex justify-center h-[30px] w-full mb-[5px]">
+						<input
+							type="email"
+							onChange={(e) => setEm(e.target.value)}
+							placeholder="Email"
+							value={em}
+							className={
+								error && !email
+									? 'user-email-input input-error h-full flex-[0.8] font-light text-sm'
+									: 'user-email-input h-full flex-[0.8] font-light text-sm'
+							}
+						/>
+						<button
+							disabled={!em}
+							onClick={() => submitEmail(em)}
+							className="text-xs bg-neutral-100 h-full flex-[0.2] ml-2 px-3 text-neutral-500 ease duration-300 hover:bg-neutral-300 ">
+							Submit
+						</button>
+					</div>
+				)}
+				{!user && err && (
+					<span className="text-xs text-center text-red-700 mb-[20px]">
+						{err}
+					</span>
 				)}
 				<input
 					name="street"
@@ -203,8 +231,8 @@ const CheckoutForm = ({ total, itemCount }) => {
 					placeholder="Address"
 					className={
 						error && !address.street
-							? 'user-email-input input-error'
-							: 'user-email-input'
+							? 'user-email-input input-error font-light text-sm'
+							: 'user-email-input font-light text-sm'
 					}
 				/>
 				<input
@@ -215,8 +243,8 @@ const CheckoutForm = ({ total, itemCount }) => {
 					placeholder="City"
 					className={
 						error && !address.city
-							? 'user-email-input input-error'
-							: 'user-email-input'
+							? 'user-email-input input-error font-light text-sm'
+							: 'user-email-input font-light text-sm'
 					}
 				/>
 				<input
@@ -227,8 +255,8 @@ const CheckoutForm = ({ total, itemCount }) => {
 					placeholder="Province / State"
 					className={
 						error && !address.province
-							? 'user-email-input input-error'
-							: 'user-email-input'
+							? 'user-email-input input-error font-light text-sm'
+							: 'user-email-input font-light text-sm'
 					}
 				/>
 				<input
@@ -239,8 +267,8 @@ const CheckoutForm = ({ total, itemCount }) => {
 					placeholder="Postal-Code / Zip-code"
 					className={
 						error && !address.postalcode
-							? 'user-email-input input-error'
-							: 'user-email-input'
+							? 'user-email-input input-error font-light text-sm'
+							: 'user-email-input font-light text-sm'
 					}
 				/>
 				<input
@@ -251,18 +279,20 @@ const CheckoutForm = ({ total, itemCount }) => {
 					placeholder="Country - usa / uk / canada"
 					className={
 						error && !address.country
-							? 'user-email-input input-error'
-							: 'user-email-input'
+							? 'user-email-input input-error font-light text-sm'
+							: 'user-email-input font-light text-sm'
 					}
 				/>
 			</div>
 			{email.substr(email.length - 3) === 'com' && (
-				<div className="email-verify">
-					<span>Please verify you have the correct email and address</span>
+				<div className="email-verify  text-center">
+					<span className="text-xs font-light">
+						Please verify you have the correct email and address
+					</span>
 				</div>
 			)}
-			{error && email.length < 1 && (
-				<div className="user-email-input-error text-center">
+			{error && !ValidateEmail(email) && (
+				<div className="user-email-input-error text-center text-xs">
 					<span>Hey! You have missing credentials!</span>
 				</div>
 			)}
