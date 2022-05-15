@@ -13,22 +13,21 @@ import { AUTHORIZED_ID } from '../constant'
 const Success = () => {
 	const { user } = useContext(UserContext)
 	const navigate = useNavigate()
-
-	const { displayName } = user
 	const dispatch = useDispatch()
 	const cartItems = useSelector(selectCartItems)
 	const userAddress = localStorage.getItem('address')
 	const payload = localStorage.getItem('payload')
+	const userEmail = user?.email || localStorage.getItem('altEmail')
 
 	React.useEffect(() => {
-		user?.email &&
+		userEmail &&
 			cartItems.length !== 0 &&
 			payload &&
 			// eslint-disable-next-line array-callback-return
 			cartItems.map((item) => {
 				// shopping path
 				db.collection('purchased')
-					.doc(`${user?.email}/`)
+					.doc(`${userEmail}/`)
 					.collection('shoppings')
 					.add({
 						id: item._id,
@@ -37,8 +36,8 @@ const Success = () => {
 						quantity: item.quantity,
 						price: item.price,
 						address: userAddress,
-						customer: user?.displayName,
-						email: user?.email,
+						customer: user && user?.displayName,
+						email: userEmail,
 					})
 					.then(() => {
 						// console.log(`SUCCESSFULL`)
@@ -56,8 +55,8 @@ const Success = () => {
 						quantity: item.quantity,
 						price: item.price,
 						address: userAddress,
-						customer: user?.displayName,
-						email: user?.email,
+						customer: user && user?.displayName,
+						email: userEmail,
 					})
 					.then(() => {
 						console.log(`SUCCESSFULL`)
@@ -73,6 +72,7 @@ const Success = () => {
 	const handleBackToShopping = () => {
 		localStorage.setItem('payload', '')
 		localStorage.setItem('address', '')
+		localStorage.setItem('altEmail', '')
 		navigate('/')
 	}
 
@@ -84,7 +84,9 @@ const Success = () => {
 			<Layout>
 				{payload ? (
 					<div className="pt-[150px] bg-neutral-200 lg:mt-[100px] flex flex-col items-center">
-						<h1 className="text-md text-neutral-600 uppercase mb-1">{`Hey ${displayName}`}</h1>
+						<h1 className="text-md text-neutral-600 uppercase mb-1">{`Hey ${
+							user && user?.displayName
+						}`}</h1>
 						<h1 className="text-xl uppercase">Thank you for your purchase</h1>
 						<div className="mt-10 text-neutral-600 font-light text-center">
 							<span>

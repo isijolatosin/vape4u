@@ -84,7 +84,7 @@ const CheckoutForm = ({ total, itemCount }) => {
 				postalcode: '',
 				country: '',
 			})
-			setEmail('')
+
 			setError(false)
 		}
 		Object.keys(SHIPPING_COST).filter(
@@ -163,6 +163,7 @@ const CheckoutForm = ({ total, itemCount }) => {
 		})
 
 		localStorage.setItem('payload', payload?.paymentIntent?.client_secret)
+		localStorage.setItem('altEmail', email)
 
 		if (payload.error) {
 			set_Error(`Payment failed ${payload.error.message}`)
@@ -179,6 +180,7 @@ const CheckoutForm = ({ total, itemCount }) => {
 					navigate('/success')
 				}, 5000)
 		}
+		setEmail('')
 	}
 
 	return (
@@ -297,8 +299,8 @@ const CheckoutForm = ({ total, itemCount }) => {
 					) : (
 						<article className="text-center text-xs p-1 mt-10 max-w-[70%] mx-auto rounded-sm text-neutral-500">
 							<p>
-								Hello, {user && user?.displayName}, your total of {itemCount}{' '}
-								{itemCount > 1 ? 'items' : 'item'} is $
+								Hello, {user && `${user?.displayName},`} your total of{' '}
+								{itemCount} {itemCount > 1 ? 'items' : 'item'} is $
 								{((total_amount + shipping_fee) / 100).toFixed(2)} -{' '}
 								<span className="text-cyan-800">
 									tax & shipping fee included
