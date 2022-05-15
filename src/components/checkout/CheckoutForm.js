@@ -114,15 +114,17 @@ const CheckoutForm = ({ total, itemCount }) => {
 	}
 
 	const shipping_fee = Math.floor(shippingCost.cost * 100)
-	const taxCal = total * TAX_PERCENT
-	const price = Math.floor((total + taxCal) * 100)
+	const taxPercentage = total * TAX_PERCENT
+	const tax = Math.floor(taxPercentage * 100)
+	const price = Math.floor((total + taxPercentage) * 100)
 	const total_amount = price
+	const totalPrice = Math.floor(total * 100)
 
 	const createPaymentIntent = async () => {
 		try {
 			const { data } = await axios.post(
 				'/.netlify/functions/create-payment-intent',
-				JSON.stringify({ cartItems, shipping_fee, total_amount })
+				JSON.stringify({ cartItems, shipping_fee, totalPrice, tax })
 			)
 
 			setClientSecret(data.clientSecret.split("'")?.[0])
@@ -136,9 +138,12 @@ const CheckoutForm = ({ total, itemCount }) => {
 	}
 
 	React.useEffect(() => {
-		createPaymentIntent()
-		// eslint-disable-next-line
-	}, [])
+		if (shipping_fee !== 0) {
+			createPaymentIntent()
+		}
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [shipping_fee])
 
 	const handleChange = async (event) => {
 		setDisabled(event.empty)

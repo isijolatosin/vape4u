@@ -72,6 +72,7 @@ const Success = () => {
 
 	const handleBackToShopping = () => {
 		localStorage.setItem('payload', '')
+		localStorage.setItem('address', '')
 		navigate('/')
 	}
 
