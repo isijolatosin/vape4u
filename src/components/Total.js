@@ -17,15 +17,24 @@ const Total = ({ itemCount, total }) => {
 				<ul className="flex justify-center items-center w-full">
 					<li className="flex flex-row items-center text-xs font-medium mr-5">
 						<img className="h-[8px] mr-2" src={usaImage} alt="usa-flag" />
-						USA - ${SHIPPING_COST.usa}:00
+						USA - $
+						{Number.isInteger(SHIPPING_COST.usa)
+							? `${SHIPPING_COST.usa}:00`
+							: SHIPPING_COST.usa}
 					</li>
 					<li className="flex flex-row items-center text-xs font-medium mr-5">
 						<img className="h-[8px] mr-2" src={canImage} alt="canada-flag" />
-						CAN - ${SHIPPING_COST.canada}:00
+						CAN - $
+						{Number.isInteger(SHIPPING_COST.canada)
+							? `${SHIPPING_COST.canada}:00`
+							: SHIPPING_COST.canada}
 					</li>
 					<li className="flex flex-row items-center text-xs font-medium mr-5">
 						<img className="h-[8px] mr-2" src={lonImage} alt="london-flag" />
-						UK - ${SHIPPING_COST.uk}:00
+						UK - $
+						{Number.isInteger(SHIPPING_COST.uk)
+							? `${SHIPPING_COST.uk}:00`
+							: SHIPPING_COST.uk}
 					</li>
 				</ul>
 			</div>
