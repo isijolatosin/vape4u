@@ -150,7 +150,11 @@ function Card({
 						<button
 							disabled={product?.instock}
 							onClick={addToCart}
-							className="py-2 w-full bg-neutral-200 text-center text-gray-500 hover:bg-neutral-300 hover:text-gray-50 ease duration-300text-[10px] mr-1">
+							className={`py-2 w-full text-center text-gray-500 ease duration-300text-[10px] mr-1 ${
+								product?.instock
+									? 'line-through bg-neutral-50'
+									: 'bg-neutral-200 hover:bg-neutral-300 hover:text-gray-50'
+							}`}>
 							Add to cart
 						</button>
 					)}
