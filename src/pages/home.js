@@ -4,6 +4,7 @@ import Layout from '../components/shared/Layout'
 import Card from '../components/Card'
 import ProductDetails from '../components/ProductDetails'
 import { Helmet } from 'react-helmet'
+import { BiUpArrowAlt } from 'react-icons/bi'
 
 const Home = function () {
 	const [prod, setShowProduct] = React.useState(false)
@@ -13,6 +14,7 @@ const Home = function () {
 	const [singleProduct, setSingleProduct] = React.useState([])
 	const [showCaution, setShowCaution] = React.useState(false)
 	const [selectedProduct, setSelectedProduct] = React.useState('')
+	const [showTopBtn, setShowTopBtn] = React.useState(true)
 	const filterList = [
 		{
 			id: '2',
@@ -180,7 +182,22 @@ const Home = function () {
 		setTimeout(() => {
 			setShowProduct(true)
 		}, 2000)
+
+		window.addEventListener('scroll', () => {
+			if (window.scrollY > 400) {
+				setShowTopBtn(true)
+			} else {
+				setShowTopBtn(false)
+			}
+		})
 	}, [])
+
+	const goToTop = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		})
+	}
 
 	return (
 		<>
@@ -189,7 +206,15 @@ const Home = function () {
 			</Helmet>
 
 			<Layout>
-				<div className="w-[100%]">
+				<div className="w-[100%] relative">
+					{showTopBtn && (
+						<div>
+							<BiUpArrowAlt
+								onClick={goToTop}
+								className="scrollToTopBtn z-100 absolute bottom-[-45px] right-0"
+							/>
+						</div>
+					)}
 					<div className="bg-yellow-500 p-5 rounded-[30px] h-[250px]">
 						<div className="flex flex-row justify-between items-center bg-neutral-700 h-[60px] px-2 rounded-lg">
 							<span className="text-xs mt-5 md:mt-0 md:flex-[0.45] text-white mb-5 pl-2 md:mb-0">

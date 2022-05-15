@@ -357,3 +357,20 @@ html {
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
 }
+
+/* Scroll to top button */
+.scrollToTopBtn {
+	width: 50px;
+	height: 50px;
+	display: block;
+	position: fixed;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+	cursor: pointer;
+	padding: 15px;
+	border-radius: 4px;
+	transition: all 0.5s ease;
+}
