@@ -140,17 +140,19 @@ function Card({
 				</div>
 				<div className=" my-3 text-neutral-900 hover:cursor-pointer">
 					{isInCart(singleProduct, cartItems) ? (
-						<div
+						<button
+							disabled={product?.instock}
 							onClick={cartItems.length !== 0 ? IncreaseItem : null}
-							className="text-yellow-600 text-center bg-neutral-100 py-2 hover:bg-neutral-200 ease duration-300">
-							<span className="text-[10px] mr-1">Add More</span>
-						</div>
+							className="text-yellow-600 w-full text-center bg-neutral-100 py-2 hover:bg-neutral-200 ease duration-300 text-[10px] mr-1">
+							Add More
+						</button>
 					) : (
-						<div
+						<button
+							disabled={product?.instock}
 							onClick={addToCart}
-							className="py-2 bg-neutral-200 text-center text-gray-500 hover:bg-neutral-300 hover:text-gray-50 ease duration-300">
-							<span className="text-[10px] mr-1">Add to cart</span>
-						</div>
+							className="py-2 w-full bg-neutral-200 text-center text-gray-500 hover:bg-neutral-300 hover:text-gray-50 ease duration-300text-[10px] mr-1">
+							Add to cart
+						</button>
 					)}
 				</div>
 			</div>

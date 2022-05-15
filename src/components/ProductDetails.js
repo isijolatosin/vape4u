@@ -211,9 +211,17 @@ const ProductDetails = function ({
 					)}
 					<div className="flex flex-row justify-between w-[80%">
 						{isInCart(singleProduct, cartItems) ? (
-							<Button handleFunc={IncreaseItem}>Add More (+1)</Button>
+							<Button
+								isDisabled={singleProduct?.instock}
+								handleFunc={IncreaseItem}>
+								Add More (+1)
+							</Button>
 						) : (
-							<Button handleFunc={addToCart}>Add to cart</Button>
+							<Button
+								isDisabled={singleProduct?.instock}
+								handleFunc={addToCart}>
+								Add to cart
+							</Button>
 						)}
 						<div className="border-l-2 border-gray-900  pl-5 ml-5 mt-5 text-3xl text-gray-900 hover:text-gray-600 hover:cursor-pointer text-left font-light ease-in duration-300">
 							<span
