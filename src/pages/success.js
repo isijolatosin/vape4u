@@ -84,9 +84,9 @@ const Success = () => {
 			<Layout>
 				{payload ? (
 					<div className="pt-[150px] bg-neutral-200 lg:mt-[100px] flex flex-col items-center">
-						<h1 className="text-md text-neutral-600 uppercase mb-1">{`Hey ${
-							user && user?.displayName
-						}`}</h1>
+						<h1 className="text-md text-neutral-600 uppercase mb-1">
+							{user ? `Hey ${user?.displayName}` : 'Hey!'}
+						</h1>
 						<h1 className="text-xl uppercase">Thank you for your purchase</h1>
 						<div className="mt-10 text-neutral-600 font-light text-center">
 							<span>
