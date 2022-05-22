@@ -184,6 +184,7 @@ const CheckoutForm = ({ total, itemCount }) => {
 				}, 5000)
 		}
 		setEmail('')
+		localStorage.setItem('address', '')
 	}
 
 	return (
