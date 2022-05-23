@@ -67,7 +67,8 @@ const Success = () => {
 		setTimeout(() => {
 			dispatch(clearCartItem())
 		}, 500)
-	})
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
 
 	React.useEffect(() => {
 		setTimeout(() => {
