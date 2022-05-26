@@ -36,7 +36,7 @@ const Success = () => {
 						quantity: item.quantity,
 						price: item.price,
 						address: userAddress,
-						customer: user && user?.displayName,
+						customer: (user && user?.displayName) || userEmail,
 						email: userEmail,
 					})
 					.then(() => {
@@ -55,7 +55,7 @@ const Success = () => {
 						quantity: item.quantity,
 						price: item.price,
 						address: userAddress,
-						customer: user && user?.displayName,
+						customer: (user && user?.displayName) || userEmail,
 						email: userEmail,
 					})
 					.then(() => {
@@ -64,21 +64,14 @@ const Success = () => {
 					.catch((error) => console.log('Error' + error.message))
 			})
 
-		setTimeout(() => {
-			dispatch(clearCartItem())
-		}, 500)
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
-	React.useEffect(() => {
-		setTimeout(() => {
-			localStorage.setItem('payload', '')
-			localStorage.setItem('address', '')
-			localStorage.setItem('altEmail', '')
-		}, 5000)
-	}, [])
-
 	const handleBackToShopping = () => {
+		dispatch(clearCartItem())
+		localStorage.setItem('payload', '')
+		localStorage.setItem('address', '')
+		localStorage.setItem('altEmail', '')
 		navigate('/')
 	}
 

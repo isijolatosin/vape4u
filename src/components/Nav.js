@@ -83,7 +83,7 @@ const Nav = function () {
 							</span>
 						)}
 						<Link
-							to={`/checkout/${user?.displayName}`}
+							to={`/checkout/${user?.displayName || 'new-customer'}`}
 							className="flex items-center justify-between">
 							<div
 								className={

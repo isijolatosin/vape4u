@@ -22,6 +22,7 @@ const CheckoutForm = ({ total, itemCount }) => {
 	const [_error, set_Error] = React.useState(null)
 	const [processing, setProcessing] = React.useState('')
 	const [disabled, setDisabled] = React.useState(true)
+	const [alert, setAlert] = React.useState(false)
 	const [clientSecret, setClientSecret] = React.useState('')
 	const [allowproceed, setAllowProceed] = React.useState(false) //CHANGE BACK TO FALSE
 	const [address, setAddress] = React.useState({
@@ -58,46 +59,56 @@ const CheckoutForm = ({ total, itemCount }) => {
 
 	// Submit address
 	const handleSubmitAddress = () => {
-		const shippingAd = `${address.street}, ${address.city}. ${address.province}. ${address.postalcode}. ${address.country}`
-
-		if (!user || !email) {
-			setError(true)
-		}
 		if (
-			(user &&
-				address?.city &&
-				address?.street &&
-				address?.province &&
-				address?.postalcode &&
-				address?.country) ||
-			(email &&
-				ValidateEmail(email) &&
-				address?.street &&
-				address?.city &&
-				address?.province &&
-				address?.postalcode &&
-				address?.country)
+			address?.country.toLowerCase() === 'usa' ||
+			address?.country.toLowerCase() === 'uk' ||
+			address?.country.toLowerCase() === 'canada'
 		) {
-			localStorage.setItem('address', shippingAd)
-			setAllowProceed(true)
-			setAddress({
-				street: '',
-				city: '',
-				province: '',
-				postalcode: '',
-				country: '',
-			})
+			const shippingAd = `${address.street}, ${address.city}. ${address.province}. ${address.postalcode}. ${address.country}`
 
-			setError(false)
-		}
-		Object.keys(SHIPPING_COST).filter(
-			(cntry) =>
-				cntry.toLowerCase() === address.country.toLowerCase() &&
-				setShippingCost({
-					country: cntry,
-					cost: SHIPPING_COST[cntry],
+			if (!user || !email) {
+				setError(true)
+			}
+			if (
+				(user &&
+					address?.city &&
+					address?.street &&
+					address?.province &&
+					address?.postalcode &&
+					address?.country) ||
+				(email &&
+					ValidateEmail(email) &&
+					address?.street &&
+					address?.city &&
+					address?.province &&
+					address?.postalcode &&
+					address?.country)
+			) {
+				localStorage.setItem('address', shippingAd)
+				localStorage.setItem('altEmail', email)
+				setAllowProceed(true)
+				setAddress({
+					street: '',
+					city: '',
+					province: '',
+					postalcode: '',
+					country: '',
 				})
-		)
+
+				setError(false)
+			}
+			Object.keys(SHIPPING_COST).filter(
+				(cntry) =>
+					cntry.toLowerCase() === address.country.toLowerCase() &&
+					setShippingCost({
+						country: cntry,
+						cost: SHIPPING_COST[cntry],
+					})
+			)
+			setEmail('')
+		} else {
+			setAlert(true)
+		}
 	}
 
 	const cardStyle = {
@@ -159,37 +170,42 @@ const CheckoutForm = ({ total, itemCount }) => {
 		ev.preventDefault()
 		setProcessing(true)
 
-		const payload = await stripe.confirmCardPayment(clientSecret, {
-			payment_method: {
-				card: elements.getElement(CardElement),
-			},
-		})
+		if (clientSecret) {
+			const payload = await stripe.confirmCardPayment(clientSecret, {
+				payment_method: {
+					card: elements.getElement(CardElement),
+				},
+			})
 
-		localStorage.setItem('payload', payload?.paymentIntent?.client_secret)
-		localStorage.setItem('altEmail', email)
+			localStorage.setItem('payload', payload?.paymentIntent?.client_secret)
 
-		if (payload.error) {
-			set_Error(`Payment failed ${payload.error.message}`)
-			setProcessing(false)
-			setTimeout(() => {
-				navigate('/canceled')
-			}, 5000)
-		} else {
-			set_Error(null)
-			setProcessing(false)
-			setSucceeded(true)
-			payload?.paymentIntent?.client_secret &&
+			if (payload.error) {
+				set_Error(`Payment failed ${payload.error.message}`)
+				setProcessing(false)
 				setTimeout(() => {
-					navigate('/success')
+					navigate('/canceled')
 				}, 5000)
+			} else {
+				set_Error(null)
+				setProcessing(false)
+				setSucceeded(true)
+				payload?.paymentIntent?.client_secret &&
+					setTimeout(() => {
+						navigate('/success')
+					}, 5000)
+			}
 		}
-		setEmail('')
-		localStorage.setItem('address', '')
 	}
 
 	return (
 		<div>
 			<div className="flex flex-col max-w-[100%] md:max-w-[70%] mx-auto mt-5">
+				<span className="text-xs text-center mb-5 mt-5 font-light">
+					We currently ship to these 3 countries -{' '}
+					<span className="font-bold">United States</span> -{' '}
+					<span className="font-bold">United Kingdom</span> -{' '}
+					<span className="font-bold">Canada</span>
+				</span>
 				{!user && (
 					<input
 						type="email"
@@ -197,7 +213,7 @@ const CheckoutForm = ({ total, itemCount }) => {
 						placeholder="Email"
 						value={email}
 						className={
-							error && !email
+							error && !ValidateEmail(email)
 								? 'user-email-input input-error font-light text-sm'
 								: 'user-email-input font-light text-sm'
 						}
@@ -274,6 +290,14 @@ const CheckoutForm = ({ total, itemCount }) => {
 			{error && (
 				<div className="user-email-input-error text-center text-xs">
 					<span>Hey! You have missing credentials!</span>
+				</div>
+			)}
+			{alert && (
+				<div className="text-red-800 text-xs flex flex-row items-center justify-center mt-5">
+					<GoAlert className="mr-2" />
+					<span>
+						You are not authorize to make purchase from this region/country
+					</span>
 				</div>
 			)}
 			<div className="total-button text-sm mx-auto flex flex-row items-center">
