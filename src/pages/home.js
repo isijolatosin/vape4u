@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios'
 import Layout from '../components/shared/Layout'
 import Card from '../components/Card'
 import ProductDetails from '../components/ProductDetails'
 import { Helmet } from 'react-helmet'
 import { BiUpArrowAlt } from 'react-icons/bi'
+import { db } from '../firebase'
+import { AUTHORIZED_ID } from '../constant'
+import { UserContext } from '../context/user-context'
 
 const Home = function () {
+	const { user } = useContext(UserContext)
 	const [prod, setShowProduct] = React.useState(false)
 	const [index, setIndex] = React.useState(0)
+	const [noOfVisits, setNoOfVisits] = React.useState(0)
 	const [fetchAllBeads, setFetchAllBeads] = React.useState([])
 	const [fetchAllHair, setFetchAllHair] = React.useState([])
 	const [singleProduct, setSingleProduct] = React.useState([])
@@ -52,8 +57,41 @@ const Home = function () {
 		}
 	}
 
+	function getVisits() {
+		var xhr = new XMLHttpRequest()
+		xhr.open('GET', 'https://api.countapi.xyz/hit/pvginternational-s.com/pvg') // change the ext before working in dev env
+		xhr.responseType = 'json'
+		xhr.onload = function () {
+			db.collection('admin')
+				.doc(`${AUTHORIZED_ID.id_one}/`)
+				.collection('visits')
+				.doc('pvg1234')
+				.update({
+					visits: this.response.value,
+				})
+		}
+		xhr.send()
+	}
+
 	React.useEffect(() => {
 		fetchProducts()
+		getVisits()
+		db.collection('admin')
+			.doc(`${AUTHORIZED_ID.id_one}/`)
+			.collection('visits')
+			.onSnapshot((snapshot) => {
+				const results = snapshot.docs.map((doc) => ({
+					data: doc.data(),
+				}))
+				// console.log(results)
+				if (results) {
+					const data = {
+						visits: results[results.length - 1].data.visits,
+					}
+					setNoOfVisits(data)
+					// console.log(data)
+				}
+			})
 	}, [])
 
 	const scrollToTop = function scrollToTop() {
@@ -215,6 +253,12 @@ const Home = function () {
 								className="scrollToTopBtn z-100 absolute bottom-[-45px] right-0"
 							/>
 						</div>
+					)}
+					{(user?.email === AUTHORIZED_ID.id_one ||
+						user?.email === AUTHORIZED_ID.id_two) && (
+						<p className="text-xs text-center mb-2 text-green-700">
+							Number of Visits: {noOfVisits?.visits}
+						</p>
 					)}
 					<div className="bg-yellow-500 p-5 rounded-[30px] h-[250px]">
 						<div className="flex flex-row justify-between items-center bg-neutral-700 h-[60px] px-2 rounded-lg">
