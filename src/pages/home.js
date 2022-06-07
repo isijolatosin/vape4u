@@ -5,6 +5,7 @@ import Card from '../components/Card'
 import ProductDetails from '../components/ProductDetails'
 import { Helmet } from 'react-helmet'
 import { BiUpArrowAlt } from 'react-icons/bi'
+import { VscChromeClose } from 'react-icons/vsc'
 import { db } from '../firebase'
 import { AUTHORIZED_ID } from '../constant'
 import { UserContext } from '../context/user-context'
@@ -12,6 +13,7 @@ import { UserContext } from '../context/user-context'
 const Home = function () {
 	const { user } = useContext(UserContext)
 	const [prod, setShowProduct] = React.useState(false)
+	const [showVisit, setShowVisit] = React.useState(false)
 	const [index, setIndex] = React.useState(0)
 	const [noOfVisits, setNoOfVisits] = React.useState(0)
 	const [fetchAllBeads, setFetchAllBeads] = React.useState([])
@@ -71,11 +73,13 @@ const Home = function () {
 				})
 		}
 		xhr.send()
+
+		setShowVisit(false)
 	}
 
 	React.useEffect(() => {
 		fetchProducts()
-		getVisits()
+
 		db.collection('admin')
 			.doc(`${AUTHORIZED_ID.id_one}/`)
 			.collection('visits')
@@ -92,6 +96,10 @@ const Home = function () {
 					// console.log(data)
 				}
 			})
+
+		setTimeout(function () {
+			setShowVisit(true)
+		}, 10000)
 	}, [])
 
 	const scrollToTop = function scrollToTop() {
@@ -245,7 +253,17 @@ const Home = function () {
 			</Helmet>
 
 			<Layout>
-				<div className="w-[100%] relative">
+				<div className="relative w-[100%]">
+					{showVisit && (
+						<div className="absolute flex items-center justify-between px-10 text-neutral-100 w-full md:w-[55%] h-[700px] md:h-[300px] md:right-[22%] md:top-[250px] bg-blur2 z-50 md:mt-[-50px] rounded-lg">
+							Thank you for choosing PVG Internationals
+							<VscChromeClose
+								onClick={getVisits}
+								size={35}
+								className="border-[1px] p-2 rounded-full hover:text-neutral-500 hover:border-neutral-500 ease duration-300 hover:cursor-pointer"
+							/>
+						</div>
+					)}
 					{showTopBtn && (
 						<div>
 							<BiUpArrowAlt
